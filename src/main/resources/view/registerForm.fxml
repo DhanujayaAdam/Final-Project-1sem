@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.RegisterFormController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.52">
+         <image>
+            <Image url="@../image/16700399_1261374977273187_911085346465028800_o.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="37.0" layoutY="80.0" prefHeight="241.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <Text fill="#1d4e89" layoutX="34.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Form">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtUsername" layoutX="15.0" layoutY="61.0" onAction="#txtUsernameOnAction" prefHeight="30.0" prefWidth="170.0" promptText="username" style="-fx-background-radius: 11;">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtPassword" layoutX="15.0" layoutY="96.0" onAction="#txtPasswordOnAction" prefHeight="30.0" prefWidth="170.0" promptText="password" style="-fx-background-radius: 11;">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtReEnterPassword" layoutX="15.0" layoutY="131.0" onAction="#txtReEnterPasswordOnAction" prefHeight="30.0" prefWidth="170.0" promptText="re-enter password" style="-fx-background-radius: 11;">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </TextField>
+            <JFXButton buttonType="RAISED" layoutX="55.0" layoutY="181.0" onAction="#btnRegisterOnAction" prefHeight="24.0" prefWidth="90.0" style="-fx-background-color: #1d4e89;" text="Register" textFill="WHITE" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane layoutX="478.0" layoutY="325.0" prefHeight="61.0" prefWidth="122.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="8.0" layoutY="16.0">
+               <image>
+                  <Image url="@../icon/icons8-logo-50.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US CARGO">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Text fill="WHITE" layoutX="268.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello..!">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow spread="0.7">
+               <color>
+                  <Color red="0.02631578966975212" green="0.025584794580936432" blue="0.025584794580936432" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Text fill="WHITE" layoutX="268.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to US Cargo ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow spread="0.7">
+               <color>
+                  <Color red="0.02631578966975212" green="0.025584794580936432" blue="0.025584794580936432" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <Label fx:id="lbluser" layoutX="359.0" layoutY="112.0" text="User" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow spread="0.7">
+               <color>
+                  <Color red="0.02631578966975212" green="0.025584794580936432" blue="0.025584794580936432" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Text fill="WHITE" layoutX="268.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="As a Respectful Employee">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <effect>
+            <DropShadow spread="0.7">
+               <color>
+                  <Color red="0.02631578966975212" green="0.025584794580936432" blue="0.025584794580936432" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Text>
+      <ImageView fitWidth="30.0" layoutX="19.0" layoutY="14.0">
+         <image>
+            <Image url="@../icon/icons8-home-30(2).png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="18.0" layoutY="17.0" onAction="#btnBackOnAction" prefHeight="24.0" prefWidth="105.0" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

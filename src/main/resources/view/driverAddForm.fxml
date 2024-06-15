@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="575.0" prefWidth="562.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.DriverAddFormController">
+   <children>
+      <Pane fx:id="oldPane" layoutY="6.0" opacity="0.32" prefHeight="840.0" prefWidth="1239.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="209.0" layoutY="704.0" onAction="#btnCancelOnAction" prefHeight="43.0" prefWidth="259.0" style="-fx-cursor: hand; -fx-background-color: lightblue;" text="cancel">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="491.0" layoutY="704.0" onAction="#btnClearOnAction" prefHeight="43.0" prefWidth="259.0" style="-fx-cursor: hand; -fx-background-color: lightblue;" text="clear">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="791.0" layoutY="705.0" onAction="#btnSaveOnAction" prefHeight="43.0" prefWidth="259.0" style="-fx-cursor: hand; -fx-background-color: lightblue;" text="save">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <TextField fx:id="txtFirstName" alignment="CENTER" layoutX="182.0" layoutY="276.0" onAction="#txtFirstNameOnAction" onKeyReleased="#firstNameKeyReleaseOnAction" prefHeight="52.0" prefWidth="395.0" promptText="sahan" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtLastName" alignment="CENTER" layoutX="661.0" layoutY="276.0" onAction="#txtLastNameOnAction" onKeyReleased="#lastNameKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="dhanujaya" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtDob" alignment="CENTER" layoutX="182.0" layoutY="475.0" onAction="#txtDobOnAction" onKeyReleased="#dobKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="yyyy/mm/dd" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtNic" alignment="CENTER" layoutX="661.0" layoutY="475.0" onAction="#txtNicOnACtion" onKeyReleased="#nicKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="2003XXXXXXXX" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtPhone" alignment="CENTER" layoutX="182.0" layoutY="575.0" onAction="#txtPhoneOnAction" onKeyReleased="#phoneKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="07XXXXXXXX" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtEmail" alignment="CENTER" layoutX="661.0" layoutY="575.0" onAction="#txtEmailOnAction" onKeyReleased="#emailKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="abc@gmail.com" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="txtAddress" alignment="CENTER" layoutX="182.0" layoutY="376.0" onAction="#txtAddressOnAction" onKeyReleased="#addressKeyReleasedOnAction" prefHeight="52.0" prefWidth="875.0" promptText="116/1,Grace Peris Road,Panadura" style="-fx-background-radius: 25;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Pane layoutX="211.0" layoutY="267.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: white;" />
+            <Text layoutX="212.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="694.0" layoutY="268.0" prefHeight="19.0" prefWidth="80.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="-4.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="212.0" layoutY="368.0" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: white;" />
+            <Text layoutX="213.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="212.0" layoutY="464.0" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: white;" />
+            <Text layoutX="214.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="692.0" layoutY="464.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: white;" />
+            <Text layoutX="694.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIC">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="213.0" layoutY="564.0" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: white;" />
+            <Text layoutX="215.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="693.0" layoutY="564.0" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: white;" />
+            <Text layoutX="695.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Circle fx:id="driverProfile" fill="WHITE" layoutX="601.0" layoutY="137.0" radius="86.0" stroke="BLACK" strokeType="INSIDE" />
+            <JFXButton layoutX="634.0" layoutY="195.0" onAction="#btnAddProfilePhotoOnAction" prefHeight="15.0" prefWidth="28.0" style="-fx-background-color: white;" text="." />
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="636.0" layoutY="193.0">
+               <image>
+                  <Image url="@../icon/icons8-camera-50.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="newPane" layoutX="380.0" layoutY="277.0" prefHeight="239.0" prefWidth="446.0" style="-fx-background-color: white; visibility: true;">
+         <effect>
+            <DropShadow height="83.27" offsetX="8.0" offsetY="8.0" radius="33.7225" spread="0.03" width="53.62">
+               <color>
+                  <Color red="0.43421053886413574" green="0.4281798303127289" blue="0.4281798303127289" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Text layoutX="37.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;If you enter a driver in the system, you must enter the registration number of the vehicle that belongs to him.&quot;" wrappingWidth="372.1865234375">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#1e2679" layoutX="94.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle ID" />
+            <JFXComboBox fx:id="comboId" layoutX="202.0" layoutY="108.0" onAction="#comboIdOnAction" prefHeight="24.0" prefWidth="151.0" />
+            <JFXButton buttonType="RAISED" layoutX="154.0" layoutY="182.0" onAction="#btnConformOnAction" prefHeight="34.0" prefWidth="139.0" style="-fx-background-color: lightgreen;" text="confirm">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="566.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.VehicleSelectionForm">
+   <effect>
+      <DropShadow height="7.85" radius="2.9625" width="6.0">
+         <color>
+            <Color red="0.05000000074505806" green="0.048500001430511475" blue="0.048500001430511475" opacity="0.0" />
+         </color>
+      </DropShadow>
+   </effect>
+   <children>
+      <Pane layoutX="59.0" layoutY="163.0" prefHeight="239.0" prefWidth="446.0" style="-fx-background-color: white;">
+         <effect>
+            <DropShadow offsetX="7.0" offsetY="7.0">
+               <color>
+                  <Color red="0.43421053886413574" green="0.4281798303127289" blue="0.4281798303127289" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Text layoutX="24.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;If you enter a driver in the system, you must enter the registration number of the vehicle that belongs to him.&quot;" wrappingWidth="372.1865234375">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#1e2679" layoutX="102.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle ID" />
+            <JFXComboBox fx:id="comboId" layoutX="210.0" layoutY="108.0" onAction="#comboIdOnAction" prefHeight="24.0" prefWidth="151.0" />
+            <JFXButton buttonType="RAISED" layoutX="69.0" layoutY="183.0" onAction="#btnConformOnAction" prefHeight="34.0" prefWidth="139.0" style="-fx-background-color: lightgreen;" text="confirm">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="241.0" layoutY="183.0" onAction="#btnCancelOnAction" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: red;" text="cancel">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <ImageView layoutX="423.0" layoutY="-1.0">
+               <image>
+                  <Image url="@../icon/icons8-close-24.png" />
+               </image>
+            </ImageView>
+            <JFXButton layoutX="421.0" layoutY="1.0" onAction="#btnCancelOnAction1" prefHeight="24.0" prefWidth="24.0" text="." />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

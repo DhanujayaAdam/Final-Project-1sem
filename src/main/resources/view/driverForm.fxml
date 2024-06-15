@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="1015.0" prefWidth="1671.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.DriverFormController">
+   <children>
+      <Pane layoutX="1.0" prefHeight="96.0" prefWidth="1671.0" style="-fx-background-color: white; -fx-border-color: lightgray;">
+         <children>
+            <Text layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="#979696" layoutX="1258.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="recent drivers">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <ScrollPane hbarPolicy="NEVER" layoutX="1258.0" layoutY="125.0" prefHeight="878.0" prefWidth="400.0" style="-fx-background-color: white;">
+        <content>
+          <AnchorPane fx:id="scrollPane" minHeight="0.0" minWidth="0.0" prefHeight="873.0" prefWidth="409.0" style="-fx-background-color: white;">
+               <children>
+                  <Line endX="169.0" layoutX="157.0" layoutY="118.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="55.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink layoutX="175.0" layoutY="820.0" onAction="#hplViewDriverOnAction" style="-fx-cursor: hand;" text="see all">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Hyperlink>
+                  <Hyperlink fx:id="hplName1" layoutX="99.0" layoutY="40.0" onAction="#hplName1OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="63.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId1" layoutX="133.0" layoutY="63.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="228.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="165.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName2" layoutX="99.0" layoutY="150.0" onAction="#hplName2OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="173.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId2" layoutX="133.0" layoutY="173.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="338.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="275.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName3" layoutX="99.0" layoutY="260.0" onAction="#hplName3Onaction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="283.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId3" layoutX="133.0" layoutY="283.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="448.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="385.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName4" layoutX="99.0" layoutY="370.0" onAction="#hplName4OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="393.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId4" layoutX="133.0" layoutY="393.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="558.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="495.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName5" layoutX="99.0" layoutY="480.0" onAction="#hplName5OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="503.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId5" layoutX="133.0" layoutY="503.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="668.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="605.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName6" layoutX="99.0" layoutY="590.0" onAction="#hplName6OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="613.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId6" layoutX="133.0" layoutY="613.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="169.0" layoutX="157.0" layoutY="778.0" startX="-100.0" stroke="#9a9a9a" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="314.0" layoutY="715.0" rotate="180.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(2).png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="hplName7" layoutX="99.0" layoutY="700.0" onAction="#hplName7OnAction" text="Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="105.0" layoutY="723.0" text="ID-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblId7" layoutX="133.0" layoutY="723.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="profilePicture1" fill="#ffffff00" layoutX="69.0" layoutY="63.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture2" fill="#ffffff00" layoutX="69.0" layoutY="173.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture3" fill="#ffffff00" layoutX="69.0" layoutY="283.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture4" fill="#ffffff00" layoutX="69.0" layoutY="393.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture5" fill="#ffffff00" layoutX="69.0" layoutY="503.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture6" fill="#ffffff00" layoutX="69.0" layoutY="613.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture7" fill="#ffffff00" layoutX="69.0" layoutY="723.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+        </content>
+         <effect>
+            <DropShadow height="4.0" radius="1.75" width="5.0" />
+         </effect>
+      </ScrollPane>
+      <JFXButton fx:id="txtTips" buttonType="RAISED" layoutX="7.0" layoutY="110.0" onAction="#btnTipsOnAction" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: white;" text="Tips" textFill="#1d4e89">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="127.0" layoutY="110.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: white;" text="Add" textFill="#1d4e89">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="247.0" layoutY="110.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: white;" text="Update" textFill="#1d4e89">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnAlert" buttonType="RAISED" layoutX="367.0" layoutY="110.0" onAction="#btnAlertOnAction" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: white;" text="Report" textFill="#1d4e89">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Circle fill="#ffffff00" layoutX="1381.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ffffff00" layoutX="1309.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="userName" layoutX="1521.0" layoutY="34.0" text="user">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1292.0" layoutY="26.0" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../gift/icons8-mail(1).gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1364.0" layoutY="26.0" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../gift/icons8-alert.gif" />
+         </image>
+      </ImageView>
+      <Circle fx:id="profilePicture" fill="#ffffff00" layoutX="1625.0" layoutY="42.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <HBox layoutX="799.0" layoutY="21.0" prefHeight="35.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-search-50(1).png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtSearchBar" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="285.0" promptText="search something..." style="-fx-background-color: white; -fx-background-radius: 15;" />
+         </children>
+      </HBox>
+      <Label fx:id="lblDatePicker" layoutX="1159.0" layoutY="32.0" text="2024-01-01">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Pane fx:id="node" layoutX="9.0" layoutY="160.0" prefHeight="840.0" prefWidth="1239.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow height="13.5" radius="4.375" width="6.0" />
+         </effect>
+         <children>
+            <Line endX="919.0" layoutX="283.0" layoutY="220.0" opacity="0.66" startX="-254.0" />
+            <Text fill="#1d4e89" layoutX="49.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tips" wrappingWidth="48.3525390625">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="16.0" layoutY="232.0">
+               <image>
+                  <Image url="@../icon/icons8-tip-30.png" />
+               </image>
+            </ImageView>
+            <Text fill="#1d4e89" layoutX="47.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A sentence of the day ">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Pane layoutX="26.0" layoutY="55.0" prefHeight="120.0" prefWidth="1179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <effect>
+                  <DropShadow height="56.58" offsetX="8.0" offsetY="8.0" radius="30.015" width="65.48">
+                     <color>
+                        <Color red="0.2368421107530594" green="0.23135964572429657" blue="0.23135964572429657" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Text layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Tips page!">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="63.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                          Never think that someone else is passing you, always try to pass where you are, one day there will be the secret of your progress." wrappingWidth="1053.18896484375">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="16.0" layoutY="7.0">
+               <image>
+                  <Image url="@../icon/icons8-tip-30.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="26.0" layoutY="284.0" prefHeight="120.0" prefWidth="1179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <effect>
+                  <DropShadow height="56.58" offsetX="8.0" offsetY="8.0" radius="30.015" width="65.48">
+                     <color>
+                        <Color red="0.2368421107530594" green="0.23135964572429657" blue="0.23135964572429657" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Text layoutX="345.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Tips page provides information about the driver form" wrappingWidth="489.18896484375">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="41.0">
+                     <image>
+                        <Image url="@../icon/icons8-tip-30(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="26.0" layoutY="424.0" prefHeight="120.0" prefWidth="1179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <effect>
+                  <DropShadow height="56.58" offsetX="8.0" offsetY="8.0" radius="30.015" width="65.48">
+                     <color>
+                        <Color red="0.2368421107530594" green="0.23135964572429657" blue="0.23135964572429657" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Text layoutX="107.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Use the Ads page to enter drivers into the system, where you must provide coverage for each driver. Use the &quot;Next&quot; button for that. Otherwise, it cannot be entered into the driver's system." wrappingWidth="1007.18896484375">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="43.0">
+                     <image>
+                        <Image url="@../icon/icons8-tip-30(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="26.0" layoutY="564.0" prefHeight="120.0" prefWidth="1179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <effect>
+                  <DropShadow height="56.58" offsetX="8.0" offsetY="8.0" radius="30.015" width="65.48">
+                     <color>
+                        <Color red="0.2368421107530594" green="0.23135964572429657" blue="0.23135964572429657" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Text layoutX="63.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The &quot;Update&quot; button will update the driver's details. Before going to the update page, use the system. An &quot;OTP&quot; code will be issued by email. Enter it and you can go to the &quot;Update&quot; page." wrappingWidth="1053.1889648437502">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="43.0">
+                     <image>
+                        <Image url="@../icon/icons8-tip-30(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="26.0" layoutY="704.0" prefHeight="120.0" prefWidth="1179.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+               <effect>
+                  <DropShadow height="56.58" offsetX="8.0" offsetY="8.0" radius="30.015" width="65.48">
+                     <color>
+                        <Color red="0.2368421107530594" green="0.23135964572429657" blue="0.23135964572429657" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="14.0" layoutY="43.0">
+                     <image>
+                        <Image url="@../icon/icons8-tip-30(1).png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="274.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All alerts sent to the driver can be accessed through the &quot;Alerts&quot; page" wrappingWidth="631.6025390625">
+                     <font>
+                        <Font name="FreeSerif" size="21.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+   <effect>
+      <DropShadow height="6.0" radius="2.5" width="6.0" />
+   </effect>
+</AnchorPane>

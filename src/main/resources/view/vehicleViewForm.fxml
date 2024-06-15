@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="1015.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.VehicleViewFormController">
+   <left>
+      <Pane prefHeight="875.0" prefWidth="293.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="11.0" layoutY="11.0" prefHeight="855.0" prefWidth="281.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;">
+               <children>
+                  <Circle fx:id="vehicleProfile" fill="WHITE" layoutX="141.0" layoutY="103.0" radius="72.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="123.0" layoutY="184.0" text="Benz">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="110.0" layoutY="204.0" text="LO-2234" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="130.0" layoutY="225.0" text="Active" textFill="#3aab47">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="103.0" layoutY="223.0">
+                     <image>
+                        <Image url="@../icon/icons8-tick-32.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </left>
+   <top>
+      <Pane prefHeight="140.0" prefWidth="1080.0" BorderPane.alignment="CENTER" />
+      <Pane layoutX="8.0" layoutY="6.0" prefHeight="130.0" prefWidth="1905.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;">
+         <children>
+            <JFXButton layoutX="5.0" layoutY="14.0" onAction="#btnBackOnAction" prefHeight="33.0" prefWidth="113.0" text="   Back">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-back-64(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Text layoutX="23.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Profile">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <HBox layoutX="1546.0" layoutY="35.0" prefHeight="37.0" prefWidth="335.0" style="-fx-background-color: white; -fx-background-radius: 17; -fx-border-color: black; -fx-border-radius: 17;">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@../icon/icons8-search-50(1).png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="34.0" prefWidth="305.0" promptText="search driver" style="-fx-background-color: white; -fx-background-radius: 17;" />
+               </children>
+            </HBox>
+            <Circle fill="#ffffff00" layoutX="1390.0" layoutY="55.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#ffffff00" layoutX="1461.0" layoutY="55.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1373.0" layoutY="38.0" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../gift/icons8-mail(1).gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1443.0" layoutY="38.0" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@../gift/icons8-alert.gif" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblDatePicker" layoutX="1241.0" layoutY="45.0" text="2024-01-01">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="7.0" layoutY="13.0" prefHeight="853.0" prefWidth="1612.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;">
+               <effect>
+                  <DropShadow offsetX="7.0" offsetY="7.0" spread="0.29">
+                     <color>
+                        <Color red="0.6842105388641357" green="0.6842105388641357" blue="0.6842105388641357" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <Text layoutX="15.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Information">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="235.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="236.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOM">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="236.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Mileage">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="237.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Number">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="238.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chassis Number">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="239.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine Number">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ImageView fitHeight="514.0" fitWidth="554.0" layoutX="1049.0" layoutY="160.0">
+               <image>
+                  <Image url="@../background/istockphoto-1397741462-612x612.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtModel" layoutX="420.0" layoutY="207.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Hyperlink layoutX="1524.0" layoutY="41.0" onAction="#hplEditOnAction" text="Edit">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink layoutX="789.0" layoutY="678.0" onAction="#hplVehicleDeleteOnAction" text="Do you want to delete this vehicle?">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <TextField fx:id="txtColor" layoutX="420.0" layoutY="277.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtYom" layoutX="420.0" layoutY="347.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtCurrentMileage" layoutX="420.0" layoutY="417.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtVehicleNumber" layoutX="420.0" layoutY="487.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtChassisNumber" layoutX="420.0" layoutY="557.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtEngineNumber" layoutX="420.0" layoutY="627.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Text layoutX="241.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

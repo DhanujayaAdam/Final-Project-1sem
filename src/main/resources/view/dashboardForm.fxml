@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1920.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.DashboardFormController">
+   <left>
+      <Pane prefHeight="1015.0" prefWidth="249.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fill="#ffffff00" layoutX="74.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="31.0" fitWidth="41.0" layoutX="53.0" layoutY="36.0">
+               <image>
+                  <Image url="@../icon/icons8-logo-50.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="profilePicture" fill="#ffffff00" layoutX="118.0" layoutY="697.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <JFXButton layoutX="65.0" layoutY="729.0" onAction="#btnMyProfileOnAction" prefHeight="40.0" style="-fx-cursor: hand;" text="My Profile" textFill="#979696">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <VBox layoutX="38.0" layoutY="190.0" prefHeight="454.0" prefWidth="174.0">
+               <children>
+                  <JFXButton fx:id="btnDashboard" alignment="TOP_LEFT" onAction="#btnMoveToDashboardOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Dashboard" textFill="#1d4e89">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../gift/icons8-combo-chart.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnDriver" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" onAction="#btnMoveToDriverFormOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Driver" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/icons8-driver-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnVehicle" alignment="TOP_LEFT" layoutX="10.0" layoutY="73.0" onAction="#btnMoveToVehicleFormAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Vehicle" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../gift/icons8-truck.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCompany" alignment="TOP_LEFT" layoutX="10.0" layoutY="136.0" onAction="#btnMoveToCompanyFormOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Company" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../gift/icons8-company.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPackage" alignment="TOP_LEFT" layoutX="10.0" layoutY="199.0" onAction="#btnMoveToPackageFormOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Package" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../gift/icons8-package.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnService" alignment="TOP_LEFT" layoutX="10.0" layoutY="262.0" onAction="#btnMoveToServiceOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Service" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../gift/icons8-tools.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnMap" alignment="TOP_LEFT" layoutX="10.0" layoutY="325.0" onAction="#btnLoadMapOnAction" prefHeight="63.0" prefWidth="249.0" styleClass="sideBar" text="Map" textFill="#979696">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/icons8-google-maps-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton fx:id="btnLogout" alignment="BOTTOM_LEFT" layoutX="52.0" layoutY="905.0" onAction="#btnMyProfileOnAction" prefHeight="47.0" prefWidth="145.0" style="-fx-cursor: hand;" text="Logout" textFill="#979696">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-logout-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Pane layoutX="94.0" layoutY="44.0" prefHeight="17.0" prefWidth="25.0" style="-fx-background-color: white;" />
+            <Text fill="#1d4e89" layoutX="93.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US CARGO">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </left>
+   <center>
+      <Pane fx:id="rootNode" prefHeight="200.0" prefWidth="881.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fx:id="profilePicture2" fill="#ffffff00" layoutX="1371.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="profilePicture3" fill="#ffffff00" layoutX="1299.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fill="#1d4e89" layoutX="145.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US Cargo...!">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblDatePicker" layoutX="1149.0" layoutY="42.0" text="2024-01-01">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="userName" layoutX="1511.0" layoutY="44.0" text="user">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <LineChart fx:id="lineChart" layoutX="14.0" layoutY="118.0" prefHeight="476.0" prefWidth="1241.0" style="-fx-border-color: lightGray; -fx-border-radius: 20;">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Pane layoutX="13.0" layoutY="610.0" prefHeight="394.0" prefWidth="1243.0" style="-fx-border-color: lightgray; -fx-border-radius: 20;">
+               <children>
+                  <Text layoutX="70.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="70.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicles">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <BarChart fx:id="barChart" layoutX="638.0" layoutY="72.0" prefHeight="317.0" prefWidth="584.0" style="-fx-border-color: lightgray; -fx-background-radius: 10; -fx-border-radius: 10;">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <Text layoutX="649.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Packages">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Circle fx:id="employee1" fill="#ffffff00" layoutX="122.0" layoutY="128.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="employee2" fill="#ffffff00" layoutX="252.0" layoutY="128.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="employee3" fill="#ffffff00" layoutX="382.0" layoutY="128.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="employee4" fill="#ffffff00" layoutX="512.0" layoutY="128.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="vehicle1" fill="#ffffff00" layoutX="122.0" layoutY="308.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="vehicle2" fill="#ffffff00" layoutX="252.0" layoutY="308.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="vehicle3" fill="#ffffff00" layoutX="382.0" layoutY="308.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="vehicle4" fill="#ffffff00" layoutX="512.0" layoutY="308.0" radius="52.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <HBox layoutX="789.0" layoutY="31.0" prefHeight="35.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/icons8-search-50(1).png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtSearchBar" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="285.0" promptText="search something..." style="-fx-background-color: white; -fx-background-radius: 15;" />
+               </children>
+            </HBox>
+            <Pane layoutX="1267.0" layoutY="118.0" prefHeight="476.0" prefWidth="394.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: lightgray;">
+               <children>
+                  <Text fill="#1d4e89" layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Package">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink layoutX="171.0" layoutY="433.0" onAction="#hplSeeAllPackageOnAction" text="See all" />
+                  <Line endX="237.0" layoutX="104.0" layoutY="137.0" startX="-51.0" stroke="#948d8d" />
+                  <Line endX="237.0" layoutX="104.0" layoutY="227.0" startX="-51.0" stroke="#948d8d" />
+                  <Line endX="237.0" layoutX="104.0" layoutY="317.0" startX="-51.0" stroke="#948d8d" />
+                  <Line endX="237.0" layoutX="104.0" layoutY="407.0" startX="-51.0" stroke="#948d8d" />
+                  <Hyperlink fx:id="hplTrackNum1" layoutX="86.0" layoutY="71.0" text="Tracking Number">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="93.0" layoutY="94.0" text="Company-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCompany1" layoutX="171.0" layoutY="94.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="hplTrackNum2" layoutX="86.0" layoutY="161.0" text="Tracking Number">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="93.0" layoutY="184.0" text="Company-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCompany2" layoutX="171.0" layoutY="184.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="hplTrackNum3" layoutX="86.0" layoutY="251.0" text="Tracking Number">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="93.0" layoutY="274.0" text="Company-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCompany3" layoutX="171.0" layoutY="274.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="hplTrackNum4" layoutX="86.0" layoutY="341.0" text="Tracking Number">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>backgroundImage
+                  </Hyperlink>
+                  <Label layoutX="93.0" layoutY="364.0" text="Company-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCompany4" layoutX="171.0" layoutY="364.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="package1" fill="#ffffff00" layoutX="56.0" layoutY="94.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="package2" fill="#ffffff00" layoutX="56.0" layoutY="184.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="package3" fill="#ffffff00" layoutX="56.0" layoutY="274.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="package4" fill="#ffffff00" layoutX="56.0" layoutY="364.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <Pane layoutX="1267.0" layoutY="609.0" prefHeight="394.0" prefWidth="394.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: lightgray;">
+               <children>
+                  <Text fill="#1d4e89" layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Company">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Hyperlink layoutX="171.0" layoutY="358.0" onAction="#hplSeeAllCompanyOnAction" text="See all" />
+                  <Line endX="237.0" layoutX="111.0" layoutY="142.0" startX="-51.0" stroke="#948d8d" />
+                  <Line endX="237.0" layoutX="111.0" layoutY="232.0" startX="-51.0" stroke="#948d8d" />
+                  <Line endX="237.0" layoutX="111.0" layoutY="322.0" startX="-51.0" stroke="#948d8d" />
+                  <Hyperlink fx:id="hplCompany1" layoutX="91.0" layoutY="78.0" text="Company">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="98.0" layoutY="101.0" text="Address-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAddress1" layoutX="168.0" layoutY="101.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="hplCompany2" layoutX="91.0" layoutY="168.0" text="Company">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="98.0" layoutY="191.0" text="Address-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAddress2" layoutX="168.0" layoutY="191.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="hplCompany3" layoutX="91.0" layoutY="258.0" text="Company">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label layoutX="98.0" layoutY="281.0" text="Address-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAddress3" layoutX="168.0" layoutY="281.0" text="Fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="company1" fill="#ffffff00" layoutX="60.0" layoutY="101.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="company2" fill="#ffffff00" layoutX="60.0" layoutY="191.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="company3" fill="#ffffff00" layoutX="60.0" layoutY="281.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <Circle fx:id="profilePicture1" fill="#ffffff00" layoutX="1614.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button layoutX="1347.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnInboxOnAction" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: white;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../gift/icons8-alert.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="1275.0" layoutY="32.0" minHeight="30.0" mnemonicParsing="false" onAction="#btnSendMailOnAction" prefWidth="30.0" style="-fx-background-color: white;">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../gift/icons8-mail(1).gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow height="6.0" radius="2.5" width="6.0" />
+         </effect>
+      </Pane>
+   </center>
+</BorderPane>

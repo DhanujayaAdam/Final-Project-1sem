@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="438.0" prefWidth="1162.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="280.0" fitWidth="477.0" layoutX="683.0" layoutY="54.0">
+         <image>
+            <Image url="@../background/How-to-Make-an-App-like-Google-Maps-Google-Map-App-Developmen-feature-image-1024x454.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="292.0" layoutY="360.0" onAction="#btnClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="701.0" layoutY="360.0" onAction="#btnSaveOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: LIGHTBLUE;" text="save">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="496.0" layoutY="360.0" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="update">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtLocation" alignment="CENTER" layoutX="50.0" layoutY="116.0" onAction="#txtLocationOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Panadura" style="-fx-border-color: lightgray;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="73.0" layoutY="104.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: white;" />
+      <Text layoutX="73.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Origin Location">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtDestination" alignment="CENTER" layoutX="490.0" layoutY="116.0" onAction="#txtDestinationOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Colombo" style="-fx-border-color: lightgray;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="512.0" layoutY="104.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: white;" />
+      <Text layoutX="512.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Location">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtDistance" alignment="CENTER" layoutX="489.0" layoutY="220.0" onAction="#txtDistanceOnAction" prefHeight="52.0" prefWidth="395.0" promptText="100.0" style="-fx-border-color: lightgray;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="506.0" layoutY="208.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: white;" />
+      <Text layoutX="509.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance(KM)">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="1117.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnCloseOnAction" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-close-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <JFXComboBox fx:id="comboDescription" layoutX="50.0" layoutY="220.0" onAction="#comboDescriptionOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Description" />
+   </children>
+</AnchorPane>

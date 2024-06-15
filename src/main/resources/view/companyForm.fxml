@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1015.0" prefWidth="1671.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.CompanyFormController">
+   <children>
+      <AnchorPane fx:id="oldPane" layoutX="-2.0" layoutY="-2.0" prefHeight="1015.0" prefWidth="1677.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="112.0" prefHeight="438.0" prefWidth="1162.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;">
+               <children>
+                  <ImageView fitHeight="368.0" fitWidth="357.0" layoutX="802.0" layoutY="23.0">
+                     <image>
+                        <Image url="@../background/Business-meeting-cartoon-illustration-vector.jpg" />
+                     </image>
+                  </ImageView>
+                  <JFXButton buttonType="RAISED" layoutX="497.0" layoutY="340.0" onAction="#btnClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="292.0" layoutY="340.0" onAction="#btnDeleteOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: #FF595E;" text="delete">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="701.0" layoutY="340.0" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="update">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <TextField fx:id="txtCompany" alignment="CENTER" layoutX="50.0" layoutY="116.0" onAction="#txtCompanyOnAction" onKeyReleased="#companyNameKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Mas-Holdings" style="-fx-border-color: lightgray;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Pane layoutX="73.0" layoutY="104.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: white;" />
+                  <Text layoutX="73.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company Name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtAddress" alignment="CENTER" layoutX="490.0" layoutY="116.0" onAction="#txtAddressOnAction" onKeyReleased="#addressKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Panadura" style="-fx-border-color: lightgray;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Pane layoutX="512.0" layoutY="104.0" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: white;" />
+                  <Text layoutX="512.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtEmail" alignment="CENTER" layoutX="490.0" layoutY="220.0" onKeyReleased="#emailKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="masholdings@gmail.com" style="-fx-border-color: lightgray;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Pane layoutX="510.0" layoutY="210.0" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: white;" />
+                  <Text layoutX="509.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtPhone" alignment="CENTER" layoutX="50.0" layoutY="220.0" onAction="#txtPhoneOnAction" onKeyReleased="#phoneKeyReleasedOnAction" prefHeight="52.0" prefWidth="395.0" promptText="091-XXXXXXX" style="-fx-border-color: lightgray;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Pane layoutX="70.0" layoutY="210.0" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: white;" />
+                  <Text layoutX="69.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <JFXButton buttonType="RAISED" layoutX="906.0" layoutY="340.0" onAction="#btnSaveOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: LIGHTBLUE;" text="save">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tblCompany" layoutX="2.0" layoutY="566.0" prefHeight="438.0" prefWidth="1172.0" style="-fx-background-color: white;">
+               <columns>
+                  <TableColumn fx:id="clmCompany" minWidth="6.0" prefWidth="210.0" text="Company Name" />
+                  <TableColumn fx:id="clmAddress" minWidth="6.0" prefWidth="193.0" text="Address" />
+                  <TableColumn fx:id="clmPhone" minWidth="6.0" prefWidth="244.0" text="Phone" />
+                  <TableColumn fx:id="clmEmail" minWidth="6.0" prefWidth="184.0" text="Email" />
+                  <TableColumn fx:id="clmEdit" minWidth="6.0" prefWidth="155.0" text="Edit" />
+                  <TableColumn fx:id="clmDelete" minWidth="0.0" prefWidth="185.0" text="Delete" />
+               </columns>
+               <effect>
+                  <DropShadow height="6.0" radius="2.5" width="6.0" />
+               </effect>
+            </TableView>
+            <Pane layoutX="1188.0" layoutY="134.0" prefHeight="485.0" prefWidth="483.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: lightgray; -fx-border-radius: 10;">
+               <children>
+                  <Label fx:id="company1" layoutX="117.0" layoutY="66.0" text="Label" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="119.0" layoutY="86.0" text="Tel-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel1" layoutX="150.0" layoutY="86.0" text="fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="company2" layoutX="117.0" layoutY="146.0" text="Label" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="166.0" text="Tel-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel2" layoutX="150.0" layoutY="166.0" text="fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="company3" layoutX="117.0" layoutY="226.0" text="Label" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="246.0" text="Tel-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel3" layoutX="150.0" layoutY="246.0" text="fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="company4" layoutX="117.0" layoutY="306.0" text="Label" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="326.0" text="Tel-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel4" layoutX="150.0" layoutY="326.0" text="fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="company5" layoutX="117.0" layoutY="386.0" text="Label" textFill="#1d4e89">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="118.0" layoutY="406.0" text="Tel-">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tel5" layoutX="150.0" layoutY="406.0" text="fill">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="profilePicture1" fill="#ffffff00" layoutX="82.0" layoutY="85.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture2" fill="#ffffff00" layoutX="82.0" layoutY="165.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture3" fill="#ffffff00" layoutX="82.0" layoutY="245.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture4" fill="#ffffff00" layoutX="82.0" layoutY="325.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="profilePicture5" fill="#ffffff00" layoutX="82.0" layoutY="405.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <Text fill="#1d4e89" layoutX="1188.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="recent Company">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <BarChart fx:id="barChart1" layoutX="1189.0" layoutY="627.0" prefHeight="377.0" prefWidth="476.0" style="-fx-border-color: lightgray;">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="96.0" prefWidth="1677.0" style="-fx-background-color: white; -fx-border-color: lightgray;">
+         <children>
+            <Text layoutX="36.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Circle fill="#ffffff00" layoutX="1391.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ffffff00" layoutX="1319.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="userName" layoutX="1531.0" layoutY="44.0" text="user">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1302.0" layoutY="36.0" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../gift/icons8-mail(1).gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1374.0" layoutY="36.0" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../gift/icons8-alert.gif" />
+         </image>
+      </ImageView>
+      <Circle fx:id="profilePicture" fill="#ffffff00" layoutX="1639.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
+      <HBox layoutX="809.0" layoutY="31.0" prefHeight="35.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/icons8-search-50(1).png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtSearchBar" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="285.0" promptText="search company" style="-fx-background-color: white; -fx-background-radius: 15;" />
+         </children>
+      </HBox>
+      <Label fx:id="lblDatePicker" layoutX="1169.0" layoutY="42.0" text="2024-01-01">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

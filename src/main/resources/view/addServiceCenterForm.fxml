@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.finalProject.controller.AddVehicleCenterFormController">
+   <children>
+      <Pane prefHeight="574.0" prefWidth="1260.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: lightgray;">
+         <children>
+            <JFXButton layoutY="540.0" prefHeight="35.0" prefWidth="1260.0" style="-fx-background-color: lightgreen; -fx-background-radius: 15;" text="Back">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="320.0" fitWidth="509.0" layoutX="743.0" layoutY="127.0">
+               <image>
+                  <Image url="@../background/cartoon-color-characters-people-and-car-service-repair-concept-vector.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtCenter" alignment="CENTER" layoutX="24.0" layoutY="165.0" onAction="#txtCenterOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Auto-Miraj" style="-fx-border-radius: ; -fx-border-color: lightgray;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Pane layoutX="53.0" layoutY="156.0" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: white;" />
+            <Text layoutX="53.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="503.0" layoutY="156.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: white;" />
+            <JFXButton buttonType="RAISED" layoutX="261.0" layoutY="363.0" onAction="#btnClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="686.0" layoutY="363.0" onAction="#btnSaveOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: LIGHTBLUE;" text="save">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="473.0" layoutY="363.0" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="update">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <TextField fx:id="txtAmount" alignment="CENTER" layoutX="24.0" layoutY="265.0" onAction="#txtAmountOnAction" prefHeight="52.0" prefWidth="395.0" promptText="091-XXXXXXX" style="-fx-border-radius: ; -fx-border-color: lightgray;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Pane layoutX="53.0" layoutY="256.0" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: white;" />
+            <Text layoutX="53.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <Pane layoutX="503.0" layoutY="256.0" prefHeight="25.0" prefWidth="41.0" style="-fx-background-color: white;" />
+            <TextField fx:id="txtLocation" alignment="CENTER" layoutX="474.0" layoutY="165.0" onAction="#txtLocationOnAction" prefHeight="52.0" prefWidth="395.0" promptText="Colombo" style="-fx-border-radius: ; -fx-border-color: lightgray;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Pane layoutX="503.0" layoutY="156.0" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: white;" />
+            <Text layoutX="503.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtEmail" alignment="CENTER" layoutX="474.0" layoutY="265.0" prefHeight="52.0" prefWidth="395.0" promptText="automiraj@gmail.com" style="-fx-border-radius: ; -fx-border-color: lightgray;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Pane layoutX="503.0" layoutY="256.0" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: white;" />
+            <Text layoutX="503.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
