@@ -15,13 +15,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import lk.ijse.finalProject.model.Driver;
-import lk.ijse.finalProject.repository.DriverRepo;
+import lk.ijse.finalProject.bo.custom.DriverBO;
+import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
+import lk.ijse.finalProject.dto.DriverDTO;
 import lk.ijse.finalProject.util.Regex;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,6 +41,7 @@ public class DriverUpdateFormController implements Initializable {
     public String absolutePath;
     public AnchorPane rootNode;
     public Pane oldPane;
+    DriverBO driverBO = new DriverBOImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,7 +51,7 @@ public class DriverUpdateFormController implements Initializable {
     private void setCombo() {
         ObservableList<String > obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = DriverRepo.setComboBox();
+            List<String> idList = driverBO.getDriverId();
             for (String id : idList){
                 obList.add(id);
             }
@@ -73,14 +76,14 @@ public class DriverUpdateFormController implements Initializable {
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String address = txtAddress.getText();
-        String dob = txtDob.getText();
+        Date dob = Date.valueOf(txtDob.getText());
         String nic = txtNic.getText();
         String tel = txtPhone.getText();
         String email = txtEmail.getText();
-        Driver driver = new Driver(id,firstName,lastName,address,dob,nic,tel,email,absolutePath);
+
         try {
             if (isVlided()) {
-                boolean isUpdated = DriverRepo.updateDriver(driver);
+                boolean isUpdated = driverBO.updateDriver(new DriverDTO(id,firstName,lastName,address,dob,nic,tel,email,absolutePath));
                 if (isUpdated) {
                     clearFields();
                     new Alert(Alert.AlertType.CONFIRMATION, "Driver Updated Successfully").show();
@@ -159,11 +162,12 @@ public class DriverUpdateFormController implements Initializable {
     public void comboDriverIdOnAction(ActionEvent actionEvent) {
         String comboValue = comboDriverId.getValue();
         try {
-            Driver driver = DriverRepo.getDriver(comboValue);
+            DriverDTO driver = driverBO.getDriver(comboValue);
+            System.out.println(driver);
             txtFirstName.setText(driver.getFirstName());
             txtLastName.setText(driver.getLastname());
             txtAddress.setText(driver.getAddress());
-            txtDob.setText(driver.getDob());
+            txtDob.setText(String.valueOf(driver.getDob()));
             txtNic.setText(driver.getNic());
             txtPhone.setText(driver.getContact());
             txtEmail.setText(driver.getEmail());

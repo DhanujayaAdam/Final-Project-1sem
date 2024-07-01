@@ -1,31 +1,22 @@
 package lk.ijse.finalProject.controller;
 
-import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import lk.ijse.finalProject.DB.Dbconnection;
-import lk.ijse.finalProject.model.Vehicle;
-import lk.ijse.finalProject.model.tm.VehicleTm;
-import lk.ijse.finalProject.repository.DriverRepo;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.db.Dbconnection;
+import lk.ijse.finalProject.dto.VehicleDTO;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -36,10 +27,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import static lk.ijse.finalProject.repository.VehicleRepo.getVehicleId;
 
 public class VehicleFormController {
     public AnchorPane rootNode;
@@ -74,6 +61,7 @@ public class VehicleFormController {
     public Label userName;
     public TextField txtSearchBar;
     public Label lblDatePicker;
+    VehicleBO vehicleBO = new VehicleBOImpl();
 
     public void initialize(){
         setProfile();
@@ -83,7 +71,7 @@ public class VehicleFormController {
 
     private void setName() {
         try {
-            List<String> vehicleName = VehicleRepo.getVehicleName();
+            List<String> vehicleName = vehicleBO.getVehicleNameList();
             if(vehicleName.size() < 1){
                 hplVehicle1.setText("no data");
             } else {
@@ -127,7 +115,7 @@ public class VehicleFormController {
 
     private void setNumberPlate() {
         try {
-            List<String> vehicleNumber = VehicleRepo.getVehicleNumber();
+            List<String> vehicleNumber = vehicleBO.getVehicleNumber();
             if(vehicleNumber.size() < 1){
                 lblNumber1.setText("no data");
             } else {
@@ -223,7 +211,7 @@ public class VehicleFormController {
     public void hpl1OnAction(ActionEvent actionEvent) throws IOException {
         String vehicleNumber = lblNumber1.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -244,7 +232,7 @@ public class VehicleFormController {
     public void hpl2OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber2.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -267,7 +255,7 @@ public class VehicleFormController {
     public void hpl3OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber3.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -288,7 +276,7 @@ public class VehicleFormController {
     public void hpl4OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber4.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -309,7 +297,7 @@ public class VehicleFormController {
     public void hpl5OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber5.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -330,7 +318,7 @@ public class VehicleFormController {
     public void hpl6OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber6.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -351,7 +339,7 @@ public class VehicleFormController {
     public void hpl7OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber7.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -377,7 +365,7 @@ public class VehicleFormController {
     public void hplVehicle1OnAction(ActionEvent actionEvent) {
         String vehicleNumber = lblNumber1.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(vehicleNumber);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();
@@ -397,9 +385,10 @@ public class VehicleFormController {
     }
 
     public void hplDriver2OnAction(ActionEvent actionEvent) {
+        String vehicleNumber = hplDriver2.getText();
         try {
 
-            Vehicle vehicle = VehicleRepo.getDetail(String.valueOf(lblNumber2));
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(vehicleNumber);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/vehicleViewForm.fxml"));
             loader.load();

@@ -14,14 +14,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import lk.ijse.finalProject.model.Vehicle;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.dto.VehicleDTO;
 import lk.ijse.finalProject.util.Regex;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -41,6 +41,7 @@ public class VehicleUpdateFormController implements Initializable {
     public String rest;
     public JFXComboBox<String> comboId;
     public AnchorPane root;
+    VehicleBO vehicleBO = new VehicleBOImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,7 +51,7 @@ public class VehicleUpdateFormController implements Initializable {
     private void setCombo() {
         ObservableList<String > obList = FXCollections.observableArrayList();
         try {
-            List<String> id = VehicleRepo.getId();
+            List<String> id = vehicleBO.getCurrentVehicleList();
             for (String idList : id){
                 obList.add(idList);
             }
@@ -120,10 +121,9 @@ public class VehicleUpdateFormController implements Initializable {
         Date date = Date.valueOf(txtRegDate.getText());
         double distance = Double.parseDouble(txtCurrentMillage.getText());
 
-        Vehicle vehicle = new Vehicle(vehiId,model,vehicleNumber,chassis,engineNumber,color,yom,date,distance,rest);
         try {
             if (isValided()) {
-                boolean isUpdated = VehicleRepo.updateVehicle(vehicle);
+                boolean isUpdated = vehicleBO.updateVehicle( new VehicleDTO(vehiId,model,vehicleNumber,chassis,engineNumber,color,yom,date,distance,rest));
                 if (isUpdated) {
                     clearFields();
                     new Alert(Alert.AlertType.CONFIRMATION, "Vehicle updated successfully").show();
@@ -163,7 +163,7 @@ public class VehicleUpdateFormController implements Initializable {
     public void comboIdOnAction(ActionEvent actionEvent) {
         String id = comboId.getValue();
         try {
-            Vehicle vehicle = VehicleRepo.getValues(id);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(id);
             txtModel.setText(vehicle.getName());
             txtVehicleNumber.setText(vehicle.getVehicle_number());
             txtChassisNumber.setText(vehicle.getChassis());

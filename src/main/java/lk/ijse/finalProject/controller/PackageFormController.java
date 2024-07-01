@@ -1,12 +1,10 @@
 package lk.ijse.finalProject.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,12 +12,13 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import lk.ijse.finalProject.model.*;
-import lk.ijse.finalProject.model.Package;
-import lk.ijse.finalProject.model.tm.PackageTm;
-import lk.ijse.finalProject.repository.*;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.dao.custom.impl.*;
+import lk.ijse.finalProject.entity.*;
+import lk.ijse.finalProject.entity.Package;
+import lk.ijse.finalProject.entity.tm.PackageTm;
 import lk.ijse.finalProject.util.Regex;
 
 import java.net.URL;
@@ -27,7 +26,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PackageFormController implements Initializable {
@@ -71,6 +69,7 @@ public class PackageFormController implements Initializable {
     public Label tracking3;
     public Label tracking4;
     public Label tracking5;
+    VehicleBO vehicleBO = new VehicleBOImpl();
 
     public void sendUser(String dbUser) {
         user = dbUser;
@@ -93,7 +92,7 @@ public class PackageFormController implements Initializable {
 
     private void setpackageName() {
         try {
-            List<String> trackingList = PackageRepo.getRecentPackage();
+            List<String> trackingList = PackageDAOImpl.getRecentPackage();
 
             if (trackingList.size() < 1){
                 tracking1.setText("No Data");
@@ -121,7 +120,7 @@ public class PackageFormController implements Initializable {
                 tracking5.setText(trackingList.get(4));
             }
 
-            List<String> packageList = PackageRepo.getTypeOfGood();
+            List<String> packageList = PackageDAOImpl.getTypeOfGood();
             if (packageList.size() < 1){
                 packageType1.setText("No Data");
             } else {
@@ -182,7 +181,7 @@ public class PackageFormController implements Initializable {
     private void setTable() {
         ObservableList<PackageTm> obList = FXCollections.observableArrayList();
         try {
-            List<Package> packageList = PackageRepo.getAll();
+            List<Package> packageList = PackageDAOImpl.getAll();
             for (Package pack : packageList){
                 PackageTm tm = new PackageTm(
                         pack.getOrderId(),
@@ -229,30 +228,30 @@ public class PackageFormController implements Initializable {
 
         try {
             System.out.println("Come to try catch1");
-            String currentId = PackageRepo.getCurrentId();
+            String currentId = PackageDAOImpl.getCurrentId();
             System.out.println("is ok1");
-            String availableId = PackageRepo.getAvailableId(currentId);
+            String availableId = PackageDAOImpl.getAvailableId(currentId);
             System.out.println("is ok2");
 
-            String currentTrackingNUmber = PackageRepo.getTrackingNumber();
+            String currentTrackingNUmber = PackageDAOImpl.getTrackingNumber();
             System.out.println("is ok3");
-            String availableNumber = PackageRepo.getAvailableNumber(currentTrackingNUmber);
+            String availableNumber = PackageDAOImpl.getAvailableNumber(currentTrackingNUmber);
             System.out.println("is ok4");
 
-            String currentShipmentId = PackageRepo.getCurrentShipmenId();
+            String currentShipmentId = PackageDAOImpl.getCurrentShipmenId();
             System.out.println("is ok5");
-            String availableShipmentId = PackageRepo.getAvailableShipmentId(currentShipmentId);
+            String availableShipmentId = PackageDAOImpl.getAvailableShipmentId(currentShipmentId);
             System.out.println("is ok6");
 
           //  String destination = getTransportMode(routId);
-            String destination = RouteRepo.getDestination(routId);
+            String destination = RoutDAOImpl.getDestination(routId);
             System.out.println("is ok7");
-            String mode = RouteRepo.getMode(destination);
+            String mode = RoutDAOImpl.getMode(destination);
             System.out.println("is ok8");
 
-            double distance = Double.parseDouble(RouteRepo.getDistance(routId));
+            double distance = Double.parseDouble(RoutDAOImpl.getDistance(routId));
             System.out.println("is ok9");
-            String description = RouteRepo.getDescription(routId);
+            String description = RoutDAOImpl.getDescription(routId);
             System.out.println("is ok10");
 
             Shipment shipment = new Shipment(availableShipmentId,shipmentCost,routId);
@@ -277,7 +276,7 @@ public class PackageFormController implements Initializable {
 
     private String getTransportMode(String routId) {
         try {
-            String destination = RouteRepo.getDestination(routId);
+            String destination = RoutDAOImpl.getDestination(routId);
             return destination;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage(),ButtonType.OK).show();
@@ -305,7 +304,7 @@ public class PackageFormController implements Initializable {
     private void setComboVehicleId() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> vehicleId = VehicleRepo.getId();
+            List<String> vehicleId = vehicleBO.getCurrentVehicleList();
             for (String id : vehicleId){
                 System.out.println(id);
                 obList.add(id);
@@ -319,7 +318,7 @@ public class PackageFormController implements Initializable {
     private void setComboRoute() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = RouteRepo.getId();
+            List<String> idList = RoutDAOImpl.getId();
             for (String id : idList){
                 obList.add(id);
             }
@@ -351,7 +350,7 @@ public class PackageFormController implements Initializable {
     private void setCombo() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> companyId = ClientRepo.getCompanyId();
+            List<String> companyId = ClientDAOImpl.getCompanyId();
             for (String id : companyId){
                 obList.add(id);
             }
@@ -372,12 +371,12 @@ public class PackageFormController implements Initializable {
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String packageId = txtSearchBar.getText();
         try {
-            List<Package> all = PackageRepo.getAll(packageId);
+            List<Package> all = PackageDAOImpl.getAll(packageId);
             txtType.setText(String.valueOf(all.get(3)));
             txtWeight.setText(String.valueOf(all.get(4)));
             txtDate.setText(String.valueOf(all.get(6)));
             comboId.setItems((ObservableList<String>) all.get(2));
-            ObservableList<String> routeId = ShipmentRepo.getRouteId(String.valueOf(all.get(8)));
+            ObservableList<String> routeId = ShipmentDAOImpl.getRouteId(String.valueOf(all.get(8)));
             comboRoute.setItems(routeId);
             comboVehicleId.setItems((ObservableList<String>) all.get(5));
 
@@ -421,11 +420,11 @@ public class PackageFormController implements Initializable {
         String description = comboDescription.getValue();
         double distance = Double.parseDouble(txtDistance.getText());
         try {
-            String currentRouteId = RouteRepo.getCurrentRouteId();
-            String nextAvailableId = RouteRepo.getNextAvailableId(currentRouteId);
+            String currentRouteId = RoutDAOImpl.getCurrentRouteId();
+            String nextAvailableId = RoutDAOImpl.getNextAvailableId(currentRouteId);
             if (isValided()) {
                 Route route = new Route(nextAvailableId, location, destination, description, distance);
-                boolean isSaved = RouteRepo.saveRoute(route);
+                boolean isSaved = RoutDAOImpl.saveRoute(route);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Route saved successfully").show();
                 } else {

@@ -8,9 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.finalProject.model.Vehicle;
-import lk.ijse.finalProject.repository.DriverRepo;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.dto.VehicleDTO;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -27,6 +27,7 @@ public class VehicleViewFormController implements Initializable {
     public TextField txtEngineNumber;
     public TextField txtSearch;
     public Label lblDatePicker;
+    VehicleBO vehicleBO = new VehicleBOImpl();
 
     public void btnBackOnAction(ActionEvent actionEvent) {
     }
@@ -35,7 +36,7 @@ public class VehicleViewFormController implements Initializable {
     public void hplDeleteVehicle(ActionEvent actionEvent) {
         String numberPlate = txtVehicleNumber.getText();
         try {
-            boolean isDeleted = VehicleRepo.deleteVehicle(numberPlate);
+            boolean isDeleted = vehicleBO.deleteVehicle(numberPlate);
             if (isDeleted){
                 new Alert(Alert.AlertType.CONFIRMATION,"Vehicle Deleted Successfully").show();
             } else {
@@ -45,7 +46,7 @@ public class VehicleViewFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
-    public void sendName(Vehicle vehicle) {
+    public void sendName(VehicleDTO vehicle) {
         txtModel.setText(vehicle.getName());
         txtColor.setText(vehicle.getColor());
         txtYom.setText(vehicle.getYom());
@@ -63,7 +64,7 @@ public class VehicleViewFormController implements Initializable {
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String numberPlate = txtSearch.getText();
         try {
-            Vehicle vehicle = VehicleRepo.getDetail(numberPlate);
+            VehicleDTO vehicle = vehicleBO.getVehicleObject(numberPlate);
             txtModel.setText(vehicle.getName());
             txtColor.setText(vehicle.getColor());
             txtYom.setText(vehicle.getYom());
@@ -79,7 +80,7 @@ public class VehicleViewFormController implements Initializable {
 
     public void hplVehicleDeleteOnAction(ActionEvent actionEvent) {
         try {
-            boolean isDeleted = VehicleRepo.deleteVehicle(txtVehicleNumber.getText());
+            boolean isDeleted = vehicleBO.deleteVehicle(txtVehicleNumber.getText());
             if (isDeleted){
                 new Alert(Alert.AlertType.CONFIRMATION,"Vehicle deleted successfully").show();
             } else {

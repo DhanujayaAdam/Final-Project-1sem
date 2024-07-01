@@ -6,33 +6,26 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Box;
 import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import lk.ijse.finalProject.DB.Dbconnection;
-import lk.ijse.finalProject.repository.ClientRepo;
-import lk.ijse.finalProject.repository.PackageRepo;
-import lk.ijse.finalProject.repository.PaymentRepo;
+import lk.ijse.finalProject.dao.custom.impl.ClientDAOImpl;
+import lk.ijse.finalProject.dao.custom.impl.PackageDAOImpl;
+import lk.ijse.finalProject.dao.custom.impl.PaymentDAOImpl;
 
-import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -72,7 +65,6 @@ public class DashboardFormController implements Initializable {
     public Hyperlink hplCompany3;
     public Label lblAddress3;
     public JFXButton btnMap;
-    public Box box;
     public Circle package1;
     public Circle package2;
     public Circle package3;
@@ -102,7 +94,7 @@ public class DashboardFormController implements Initializable {
     private void setLineChart() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> profits = PaymentRepo.getProfit();
+            List<String> profits = PaymentDAOImpl.getProfit();
             for (String profit : profits){
                 obList.add(profit);
 
@@ -130,7 +122,7 @@ public class DashboardFormController implements Initializable {
 
     private void setCompany() {
         try {
-            List<String> company = ClientRepo.getCompany();
+            List<String> company = ClientDAOImpl.getCompany();
             if(company.size() < 1){
                 hplCompany1.setText("no data");
             } else {
@@ -151,7 +143,7 @@ public class DashboardFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
         try {
-            List<String> company = ClientRepo.getAddress();
+            List<String> company = ClientDAOImpl.getAddress();
             if(company.size() < 1){
                 lblAddress1.setText("no data");
             } else {
@@ -174,7 +166,7 @@ public class DashboardFormController implements Initializable {
 
     private void setPackage() {
         try {
-            List<String> trackingNumbers = PackageRepo.getTrackingNumbers();
+            List<String> trackingNumbers = PackageDAOImpl.getTrackingNumbers();
             if(trackingNumbers.size() < 1){
                 hplTrackNum1.setText("no data");
             } else {
@@ -199,7 +191,7 @@ public class DashboardFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
         try {
-            List<String> companyId = PackageRepo.getCompanyId();
+            List<String> companyId = PackageDAOImpl.getCompanyId();
             if(companyId.size() < 1){
                 lblCompany1.setText("no data");
             } else {

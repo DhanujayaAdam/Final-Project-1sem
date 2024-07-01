@@ -1,5 +1,6 @@
 package lk.ijse.finalProject.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +14,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import lk.ijse.finalProject.DB.Dbconnection;
+import lk.ijse.finalProject.bo.custom.UserBO;
+import lk.ijse.finalProject.bo.custom.impl.UserBOImpl;
 import lk.ijse.finalProject.util.Regex;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class LoginFormController {
     @FXML
@@ -31,6 +32,10 @@ public class LoginFormController {
     public Button btnInvisible;
     public ImageView imvBlind;
     public ImageView imvEye;
+    public JFXButton btnLogin;
+    UserBO userBO = new UserBOImpl();
+
+    public void initialize(){}
 
 
     public void txtUsernameOnAction(ActionEvent actionEvent) {
@@ -60,19 +65,14 @@ public class LoginFormController {
     }
 
     private void checkCredintial(String username, String password) throws SQLException {
-        String sql = "SELECT user_name,password FROM User WHERE user_name = ? || user_id = ?";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,username);
-        pstm.setObject(2,username);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            String dbPw = resultSet.getString("password");
-            if (password.equals(dbPw)){
+
+        List<String> list = userBO.checkCredintial(username, password);
+        if (username.equals(list.get(0))){
+            if (password.equals(list.get(1))){
                 try {
                     navigateToTheDashboard(username);
                 } catch (IOException e) {
                     new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-
                 }
             } else {
                 new Alert(Alert.AlertType.ERROR,"Invalid password").show();

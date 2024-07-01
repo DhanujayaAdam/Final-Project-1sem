@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -16,17 +15,18 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import lk.ijse.finalProject.repository.DriverRepo;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.DriverBO;
+import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.dto.DriverDTO;
 import lk.ijse.finalProject.util.Regex;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -44,6 +44,9 @@ public class DriverAddFormController implements Initializable {
     public JFXComboBox<String > comboId;
     public Pane newPane;
     public String rest;
+    DriverBO driverBO = new DriverBOImpl();
+    VehicleBO vehicleBO = new VehicleBOImpl();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,7 +56,7 @@ public class DriverAddFormController implements Initializable {
     private void setCombo() {
         ObservableList<String > obList = FXCollections.observableArrayList();
         try {
-            List<String> allVehicleId = VehicleRepo.getAllVehicleId();
+            List<String> allVehicleId = vehicleBO.getCurrentVehicleList();
             for(String id : allVehicleId){
                 obList.add(id);
                 comboId.setItems(obList);
@@ -67,33 +70,48 @@ public class DriverAddFormController implements Initializable {
         clearFields();
     }
     public void btnSaveOnAction(ActionEvent actionEvent) {
-            String firstName = txtFirstName.getText();
-            String lastName = txtLastName.getText();
-            String address = txtAddress.getText();
-            Date dob = Date.valueOf(txtDob.getText());
-            String nic = txtNic.getText();
-            String phone = txtPhone.getText();
-            String email = txtEmail.getText();
-            String id = comboId.getValue();
+
             try {
                 if (isValided()) {
-                    String currentDriverId = DriverRepo.getCurrentDriverId();
-                    String driverId = DriverRepo.generateDriverId(currentDriverId);
-                    boolean isSaved = DriverRepo.saveDriver(driverId, firstName, lastName, address, nic, dob, id, phone, email, rest);
-                    if (isSaved) {
-                        clearFields();
-                        setCombo();
-                        newPane.setVisible(true);
-                        oldPane.setOpacity(0.32);
-                        new Alert(Alert.AlertType.CONFIRMATION, "Driver saved SuccessFully").show();
+                    String driverId = null;
+                    String currentDriverId = driverBO.getId();
+                    if (currentDriverId != null) {
+                        String[] split = currentDriverId.split("D");
+                        int idNum = Integer.parseInt(split[1]);
+                        driverId = "D" + ++idNum;
+                        saveMethode(driverId);
                     } else {
-                        new Alert(Alert.AlertType.ERROR, "Driver can't save").show();
+                        driverId = "D1";
+                        saveMethode(driverId);
                     }
                 }
-
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
+    }
+    public void saveMethode(String driverId){
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String address = txtAddress.getText();
+        Date dob = Date.valueOf(txtDob.getText());
+        String nic = txtNic.getText();
+        String phone = txtPhone.getText();
+        String email = txtEmail.getText();
+        String id = comboId.getValue();
+        try {
+            boolean isSaved = driverBO.addDriver(new DriverDTO(driverId,firstName, lastName, address, nic, dob, id, phone, email, rest));
+            if (isSaved) {
+                clearFields();
+                setCombo();
+                newPane.setVisible(true);
+                oldPane.setOpacity(0.32);
+                new Alert(Alert.AlertType.CONFIRMATION, "Driver saved SuccessFully").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Driver can't save").show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private boolean isValided() {
@@ -171,10 +189,10 @@ public class DriverAddFormController implements Initializable {
     public void btnAddProfilePhotoOnAction(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open My Files");
-        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources"));
+        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/Final-Project/src/main/resources"));
         File selectedFile = fileChooser.showOpenDialog(null);
         String absolutePath = selectedFile.getAbsolutePath();
-        String[] split =absolutePath.split("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources");
+        String[] split =absolutePath.split("/home/dhanujaya/Desktop/Final-Project/src/main/resources");
         rest = split[1];
         Image image = new Image(String.valueOf(this.getClass().getResource(rest)));
         driverProfile.setFill(new ImagePattern(image));

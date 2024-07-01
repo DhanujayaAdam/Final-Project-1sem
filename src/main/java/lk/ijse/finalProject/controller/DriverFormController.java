@@ -7,25 +7,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import lk.ijse.finalProject.DB.Dbconnection;
-import lk.ijse.finalProject.model.Driver;
-import lk.ijse.finalProject.model.Vehicle;
-import lk.ijse.finalProject.repository.DriverRepo;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.DriverBO;
+import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
+import lk.ijse.finalProject.db.Dbconnection;
+import lk.ijse.finalProject.dto.DriverDTO;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,6 +64,7 @@ public class DriverFormController {
     public Circle profilePicture7;
     @FXML
     BorderPane borderPane;
+    DriverBO driverBO = new DriverBOImpl();
 
     public void initialize(){
         setProfilePicture();
@@ -78,7 +75,7 @@ public class DriverFormController {
 
     private void setId() {
         try {
-            List<String> id = DriverRepo.getId();
+            List<String> id = driverBO.getDriverId();
             if(id.size() < 1){
                 lblId1.setText("no data");
             } else {
@@ -121,7 +118,7 @@ public class DriverFormController {
 
     private void setName() {
         try {
-            List<String> nameList = DriverRepo.getName() ;
+            List<String> nameList = driverBO.getName() ;
             if(nameList.size() < 1){
                 hplName1.setText("no data");
             } else {
@@ -211,12 +208,6 @@ public class DriverFormController {
         stage.setTitle("Driver Info");
         stage.centerOnScreen();
     }
-
-    public void btnNextOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/vehicleSelection.fxml"));
-        this.node.getChildren().clear();
-        this.node.getChildren().add(rootNode);
-    }
     public void btnTipsOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane pane = FXMLLoader.load(this.getClass().getResource("/view/driverTipsForm.fxml"));
         this.node.getChildren().clear();
@@ -252,7 +243,8 @@ public class DriverFormController {
     public void hplName1OnAction(ActionEvent actionEvent) {
         String id = lblId1.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
+            System.out.println(driver);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -273,7 +265,7 @@ public class DriverFormController {
     public void hplName2OnAction(ActionEvent actionEvent) {
         String id = lblId2.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -294,7 +286,7 @@ public class DriverFormController {
     public void hplName3Onaction(ActionEvent actionEvent) {
         String id = lblId3.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -315,7 +307,7 @@ public class DriverFormController {
     public void hplName4OnAction(ActionEvent actionEvent) {
         String id = lblId4.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -336,7 +328,7 @@ public class DriverFormController {
     public void hplName5OnAction(ActionEvent actionEvent) {
         String id = lblId6.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -357,7 +349,7 @@ public class DriverFormController {
     public void hplName6OnAction(ActionEvent actionEvent) {
         String id = lblId6.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();
@@ -378,7 +370,7 @@ public class DriverFormController {
     public void hplName7OnAction(ActionEvent actionEvent) {
         String id = lblId7.getText();
         try {
-            Driver driver = DriverRepo.getDetail(id);
+            DriverDTO driver = driverBO.getDriver(id);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/driverViewForm.fxml"));
             loader.load();

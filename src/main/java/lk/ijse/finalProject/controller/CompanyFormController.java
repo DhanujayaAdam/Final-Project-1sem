@@ -1,6 +1,5 @@
 package lk.ijse.finalProject.controller;
 
-import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,13 +16,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.finalProject.model.Client;
-import lk.ijse.finalProject.model.tm.ClientTm;
-import lk.ijse.finalProject.repository.ClientRepo;
-import lk.ijse.finalProject.repository.PackageRepo;
+import lk.ijse.finalProject.bo.custom.ClientBO;
+import lk.ijse.finalProject.bo.custom.impl.ClientBOImpl;
+import lk.ijse.finalProject.dto.ClientDTO;
+import lk.ijse.finalProject.entity.tm.ClientTm;
+import lk.ijse.finalProject.dao.custom.impl.PackageDAOImpl;
 import lk.ijse.finalProject.util.Regex;
 
-import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -63,6 +62,7 @@ public class CompanyFormController implements Initializable {
     public Circle profilePicture4;
     public Circle profilePicture5;
     public BarChart<?,?> barChart1;
+    ClientBO clientBO = new ClientBOImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,11 +75,11 @@ public class CompanyFormController implements Initializable {
 
     private void setBarChart() {
         try {
-            int packageCount1 = PackageRepo.getPackageCount1("C1");
-            int packageCount2 = PackageRepo.getPackageCount1("C2");
-            int packageCount3 = PackageRepo.getPackageCount1("C3");
-            int packageCount4 = PackageRepo.getPackageCount1("C4");
-            int packageCount5 = PackageRepo.getPackageCount1("C5");
+            int packageCount1 = PackageDAOImpl.getPackageCount1("C1");
+            int packageCount2 = PackageDAOImpl.getPackageCount1("C2");
+            int packageCount3 = PackageDAOImpl.getPackageCount1("C3");
+            int packageCount4 = PackageDAOImpl.getPackageCount1("C4");
+            int packageCount5 = PackageDAOImpl.getPackageCount1("C5");
 
             XYChart.Series series = new XYChart.Series();
             series.getData().add(new XYChart.Data("1",packageCount1));
@@ -98,14 +98,16 @@ public class CompanyFormController implements Initializable {
 
     private void setLabel() {
         try {
-            List<String> company = ClientRepo.getAllCompany();
+            List<String> company = clientBO.getCompanyName();
+
             company1.setText(company.get(0));
             company2.setText(company.get(1));
             company3.setText(company.get(2));
-            company4.setText(company.get(4));
-            company5.setText(company.get(3));
+            company4.setText(company.get(3));
+            company5.setText(company.get(4));
 
-            List<String> number = ClientRepo.getNumber();
+
+            List<String> number = clientBO.getNumber();
             tel1.setText(number.get(0));
             tel2.setText(number.get(1));
             tel3.setText(number.get(2));
@@ -141,7 +143,7 @@ public class CompanyFormController implements Initializable {
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String companyName = txtSearchBar.getText();
         try {
-            Client client = ClientRepo.getValues(companyName);
+            ClientDTO client = clientBO.getCompanyValues(companyName);
             txtCompany.setText(client.getName());
             txtAddress.setText(client.getAddress());
             txtPhone.setText(client.getTel());
@@ -157,18 +159,40 @@ public class CompanyFormController implements Initializable {
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
         try {
-            String currentId = ClientRepo.getCurrentId();
-            String availableId = ClientRepo.getAvailableId(currentId);
-            if (isValided()) {
-                boolean isUpdated = ClientRepo.saveCompany(availableId, name, address, phone, email);
-                if (isUpdated) {
-                    clearFields();
-                    setTable();
-                    setCellValueFactory();
-                    new Alert(Alert.AlertType.CONFIRMATION, "Company saved successfully").show();
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Company not saved").show();
+            String currentId = clientBO.getCompanyId();
+            String availableId ;
+                if (currentId != null){
+                    String[] split = currentId.split("C");
+                    int idNum = Integer.parseInt(split[1]);
+                    availableId = "C" + ++idNum;
+                    if (isValided()) {
+                        saveMethod(availableId);
                 }
+            }
+                if (isValided()) {
+                    availableId = "C1";
+                    saveMethod(availableId);
+                }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+    public void saveMethod(String availableId){
+        String name = txtCompany.getText();
+        String address = txtAddress.getText();
+        String phone = txtPhone.getText();
+        String email = txtEmail.getText();
+        boolean isUpdated = false;
+        try {
+            isUpdated = clientBO.addCompany(new ClientDTO(availableId,name,address,phone,email));
+            if (isUpdated) {
+                clearFields();
+                setTable();
+                setCellValueFactory();
+                new Alert(Alert.AlertType.CONFIRMATION, "Company saved successfully").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Company not saved").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -189,10 +213,10 @@ public class CompanyFormController implements Initializable {
         String address = txtAddress.getText();
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
-        Client client = new Client(name,address,phone,email);
-        try {
-            if (isValided()) {
-                boolean isUpdated = ClientRepo.updateClient(searchName, client);
+        if (isValided()) {
+            boolean isUpdated = false;
+            try {
+                isUpdated = clientBO.updateCompany(new ClientDTO(name,address,phone,email));
                 if (isUpdated) {
                     clearFields();
                     setTable();
@@ -201,9 +225,9 @@ public class CompanyFormController implements Initializable {
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Company not updated").show();
                 }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
     }
 
@@ -211,7 +235,7 @@ public class CompanyFormController implements Initializable {
         String searchName = txtSearchBar.getText();
         try {
             if (isValided()) {
-                boolean isDeleted = ClientRepo.deleteClient(searchName);
+                boolean isDeleted = clientBO.deleteCompany(searchName);
                 if (isDeleted) {
                     clearFields();
                     setTable();
@@ -247,8 +271,8 @@ public class CompanyFormController implements Initializable {
     private void setTable() {
         ObservableList<ClientTm> observableList = FXCollections.observableArrayList();
         try {
-            List<Client> clientList = ClientRepo.getAll();
-            for (Client client : clientList){
+            List<ClientDTO> clientList = clientBO.getAllCompany();
+            for (ClientDTO client : clientList){
                 ClientTm tm = new ClientTm(
                         client.getCompany_id(),
                         client.getName(),

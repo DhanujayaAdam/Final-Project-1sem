@@ -2,15 +2,14 @@ package lk.ijse.finalProject.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.finalProject.repository.DriverRepo;
-import lk.ijse.finalProject.repository.VehicleRepo;
+import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +21,7 @@ public class VehicleSelectionForm implements Initializable {
 
     public JFXComboBox<String> comboId;
     public AnchorPane rootNode;
+    VehicleBO vehicleBO = new VehicleBOImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,9 +29,9 @@ public class VehicleSelectionForm implements Initializable {
     }
 
     private void setCombo() {
-        ObservableList<String > obList = FXCollections.observableArrayList();
+        ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> allVehicleId = VehicleRepo.getAllVehicleId();
+            List<String> allVehicleId = vehicleBO.vehicleIdList();
             for(String id : allVehicleId){
                 obList.add(id);
                 comboId.setItems(obList);
