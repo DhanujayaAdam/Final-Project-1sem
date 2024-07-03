@@ -1,7 +1,6 @@
 package lk.ijse.finalProject.bo.custom;
 
 import lk.ijse.finalProject.bo.SuperBO;
-import lk.ijse.finalProject.dao.SuperDAO;
 import lk.ijse.finalProject.dto.VehicleToBeServiceDTO;
 
 import java.sql.SQLException;
@@ -17,4 +16,5 @@ public interface VehicleToBeServicedBO extends SuperBO {
     public List<VehicleToBeServiceDTO> getAllReport() throws SQLException;
     public double getCurrentDistance(String vehicleId) throws SQLException;
     public boolean clearDistance(String vehicleId) throws SQLException;
+    public boolean updateCurrentDistance(double distance, String vehicleId) throws SQLException;
 }

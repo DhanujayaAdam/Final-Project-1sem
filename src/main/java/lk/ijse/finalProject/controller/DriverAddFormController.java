@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.DriverBO;
 import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
@@ -44,8 +45,8 @@ public class DriverAddFormController implements Initializable {
     public JFXComboBox<String > comboId;
     public Pane newPane;
     public String rest;
-    DriverBO driverBO = new DriverBOImpl();
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    DriverBO driverBO = (DriverBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DRIVER);
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
 
 
     @Override

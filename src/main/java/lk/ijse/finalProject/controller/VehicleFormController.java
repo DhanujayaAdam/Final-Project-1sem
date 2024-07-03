@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
 import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
 import lk.ijse.finalProject.db.Dbconnection;
@@ -61,7 +62,7 @@ public class VehicleFormController {
     public Label userName;
     public TextField txtSearchBar;
     public Label lblDatePicker;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
 
     public void initialize(){
         setProfile();

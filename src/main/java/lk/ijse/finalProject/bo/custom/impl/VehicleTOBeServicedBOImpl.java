@@ -1,6 +1,8 @@
 package lk.ijse.finalProject.bo.custom.impl;
 
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleToBeServicedBO;
+import lk.ijse.finalProject.dao.DAOFactory;
 import lk.ijse.finalProject.dao.custom.VehicleToBeServicedDAO;
 import lk.ijse.finalProject.dao.custom.impl.VehicleToBeServicedDAOImpl;
 import lk.ijse.finalProject.dto.VehicleToBeServiceDTO;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class VehicleTOBeServicedBOImpl implements VehicleToBeServicedBO {
-    VehicleToBeServicedDAO vehicleToBeServicedDAO = new VehicleToBeServicedDAOImpl();
+    VehicleToBeServicedDAO vehicleToBeServicedDAO = (VehicleToBeServicedDAO) DAOFactory.getDaoFactory().getInstance(DAOFactory.DaoType.VEHICLE_TO_BE_SERVICED);
 
     @Override
     public boolean addReport(VehicleToBeServiceDTO obj) throws SQLException {
@@ -54,6 +56,11 @@ public class VehicleTOBeServicedBOImpl implements VehicleToBeServicedBO {
 
     @Override
     public boolean clearDistance(String vehicleId) throws SQLException {
-        return false;
+        return vehicleToBeServicedDAO.clearDistance(vehicleId);
+    }
+
+    @Override
+    public boolean updateCurrentDistance(double distance, String vehicleId) throws SQLException {
+        return vehicleToBeServicedDAO.updateCurrentDistance(distance,vehicleId);
     }
 }

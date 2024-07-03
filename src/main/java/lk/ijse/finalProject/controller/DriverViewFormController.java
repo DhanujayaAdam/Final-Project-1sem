@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.DriverBO;
 import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
 import lk.ijse.finalProject.dto.DriverDTO;
@@ -30,19 +31,11 @@ public class DriverViewFormController implements Initializable {
     public Circle employeeProfile;
     public TextField txtSearch;
     public JFXButton btnBack;
-    DriverBO driverBO = new DriverBOImpl();
+    DriverBO driverBO = (DriverBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DRIVER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-
-    public void btnPersonelInfoOnAction(ActionEvent actionEvent) {
-        try {
-            DriverDAOImpl.setValues();
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
-        }
     }
     public void btnBackOnAction(ActionEvent actionEvent) {
 

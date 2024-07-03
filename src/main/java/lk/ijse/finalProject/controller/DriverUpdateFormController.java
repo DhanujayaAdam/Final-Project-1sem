@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.DriverBO;
 import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
 import lk.ijse.finalProject.dto.DriverDTO;
@@ -41,7 +42,7 @@ public class DriverUpdateFormController implements Initializable {
     public String absolutePath;
     public AnchorPane rootNode;
     public Pane oldPane;
-    DriverBO driverBO = new DriverBOImpl();
+    DriverBO driverBO = (DriverBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DRIVER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -150,10 +151,10 @@ public class DriverUpdateFormController implements Initializable {
     public void btnAddProfilePhotoOnAction(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open My Files");
-        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources"));
+        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/Final-Project/src/main/resources"));
         File selectedFile = fileChooser.showOpenDialog(null);
         absolutePath = selectedFile.getAbsolutePath();
-        String[] split =absolutePath.split("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources");
+        String[] split =absolutePath.split("/home/dhanujaya/Desktop/Final-Project/src/main/resources");
         String rest = split[1];
         Image image = new Image(String.valueOf(this.getClass().getResource(rest)));
         driverProfile.setFill(new ImagePattern(image));

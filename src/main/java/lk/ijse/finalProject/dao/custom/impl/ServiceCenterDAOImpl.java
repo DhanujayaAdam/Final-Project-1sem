@@ -1,5 +1,8 @@
 package lk.ijse.finalProject.dao.custom.impl;
 
+import lk.ijse.finalProject.dao.CrudDAO;
+import lk.ijse.finalProject.dao.SqlUtil;
+import lk.ijse.finalProject.dao.custom.ServiceCenterDAO;
 import lk.ijse.finalProject.db.Dbconnection;
 import lk.ijse.finalProject.entity.ServiceCenter;
 
@@ -9,68 +12,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceCenterDAOImpl {
-    public static String getCurrentId() throws SQLException {
-        String sql = "SELECT service_center_id FROM Service_center ORDER BY service_center_id DESC LIMIT 1";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            return resultSet.getString("service_center_id");
-        }
+public class ServiceCenterDAOImpl implements ServiceCenterDAO {
+    @Override
+    public boolean add(ServiceCenter obj) throws SQLException {
+        return SqlUtil.execute("INSERT INTO Service_center VALUES(?,?,?,?,?)",obj.getId(),obj.getName(),obj.getLocation(),obj.getTel(),obj.getEmail());
+    }
+    @Override
+    public boolean update(ServiceCenter serviceCenter) throws SQLException {
+        return SqlUtil.execute("UPDATE Service_center SET center_name = ?,location = ?,contact_number = ?,email = ? WHERE service_center_id =?",serviceCenter.getName(),serviceCenter.getLocation(),serviceCenter.getTel(),serviceCenter.getEmail(),serviceCenter.getId());
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public String getId() throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT service_center_id FROM Service_center ORDER BY service_center_id DESC LIMIT 1");
+        if (rst.next())
+            return rst.getString("service_center_id");
         return null;
     }
-
-    public static String getAvilableId(String currentId) {
-        if (currentId != null){
-            String[] split = currentId.split("SCI");
-            int idNum = Integer.parseInt(split[1]);
-            return "SCI" + ++idNum;
-        }
-        return "SCI1";
-    }
-
-    public static boolean saveCenter(ServiceCenter serviceCenter) throws SQLException {
-        String sql = "INSERT INTO Service_center VALUES(?,?,?,?,?)";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,serviceCenter.getId());
-        pstm.setObject(2,serviceCenter.getName());
-        pstm.setObject(3,serviceCenter.getLocation());
-        pstm.setObject(4,serviceCenter.getTel());
-        pstm.setObject(5,serviceCenter.getEmail());
-        return pstm.executeUpdate() > 0;
-    }
-
-    public static ServiceCenter getAll(String text) throws SQLException {
-        String sql = "SELECT * FROM Service_center";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            String id = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String location = resultSet.getString(3);
-            String tel = resultSet.getString(4);
-            String email = resultSet.getString(5);
-            ServiceCenter center = new ServiceCenter(id,name,location,tel,email);
-            return center;
-        }
-        return null;
-    }
-
-    public static boolean update(ServiceCenter serviceCenter) throws SQLException {
-        String sql = "UPDATE Service_center SET center_name = ?,location = ?,contact_number = ?,email = ? WHERE service_center_id =? ";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,serviceCenter.getName());
-        pstm.setObject(2,serviceCenter.getLocation());
-        pstm.setObject(3,serviceCenter.getTel());
-        pstm.setObject(4,serviceCenter.getEmail());
-        pstm.setObject(5,serviceCenter.getId());
-        return pstm.executeUpdate() > 0;
-    }
-
-    public static List<String> getId() throws SQLException {
-        String sql = "SELECT service_center_id FROM Service_center";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<String> getIds() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT service_center_id FROM Service_center");
         List<String> idlist = new ArrayList<>();
         while (resultSet.next()){
             idlist.add(resultSet.getString(1));
@@ -78,23 +44,37 @@ public class ServiceCenterDAOImpl {
         return idlist;
     }
 
-    public static List<String> getName() throws SQLException {
-        String sql = "SELECT center_name FROM Service_center ORDER BY service_center_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public String generateNewId(String id) {
+        return null;
+    }
+
+    @Override
+    public ServiceCenter getObject(String id) throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT * FROM Service_center");
+        rst.next();
+        return new ServiceCenter(rst.getString("service_center_id"),rst.getString("center_name"),rst.getString("location"),rst.getString("contact_number"),rst.getString("email"));
+
+    }
+
+    @Override
+    public List<ServiceCenter> getAll() throws SQLException {
+        return null;
+    }
+    @Override
+    public  List<String> getName() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT center_name FROM Service_center ORDER BY service_center_id DESC LIMIT 5");
         List<String> nameList = new ArrayList<>();
         while (resultSet.next()){
             nameList.add(resultSet.getString("center_name"));
         }
         return nameList;
     }
-
-    public static List<String> getPhone() throws SQLException {
-        String sql = "SELECT contact_number,service_center_id FROM Service_center ORDER BY service_center_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<String> getPhone() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT contact_number,service_center_id FROM Service_center ORDER BY service_center_id DESC LIMIT 5");
         List<String> phoneList = new ArrayList<>();
-        if (resultSet.next()){
+        while(resultSet.next()){
             String contactNumber = resultSet.getString("contact_number");
             String centerId = resultSet.getString("service_center_id");
             String value = centerId + "- " + contactNumber;

@@ -13,36 +13,20 @@ import java.util.List;
 
 public class ClientDAOImpl implements ClientDAO {
 
-    public static List<String> getCompanyId() throws SQLException {
-        String sql = "SELECT client_company_id FROM Client";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        List<String> idList = new ArrayList<>();
-        while(resultSet.next()){
-            String id = resultSet.getString(1);
-            idList.add(id);
-        }
-        return idList;
-    }
-
-    public static List<String> getCompany() throws SQLException {
-        String sql = "SELECT company_name FROM Client ORDER BY client_company_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.
-                getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public  List<String> getCompany() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT company_name FROM Client ORDER BY client_company_id DESC LIMIT 5");
         List<String> companyList = new ArrayList<>();
-        if (resultSet.next()){
-            String companyName = resultSet.getString("company_name");
-            companyList.add(companyName);
+        while (resultSet.next()){
+            companyList.add(resultSet.getString("company_name"));
         }
         return companyList;
     }
-    public static List<String> getAddress() throws SQLException {
-        String sql = "SELECT address FROM Client ORDER BY client_company_id DESC LIMIT 4";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<String> getAddress() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT address FROM Client ORDER BY client_company_id DESC LIMIT 4");
         List<String> adressList = new ArrayList<>();
-        if (resultSet.next()){
+        while (resultSet.next()){
             adressList.add(resultSet.getString("address"));
         }
         return adressList;
@@ -55,7 +39,7 @@ public class ClientDAOImpl implements ClientDAO {
 
     @Override
     public boolean update(Client obj) throws SQLException {
-        return SqlUtil.execute("UPDATE Client SET company_name = ?,address = ?,contact_number = ?,email = ? WHERE company_name = ?",obj.getName(),obj.getAddress(),obj.getTel(),obj.getEmail(),obj.getName());
+        return SqlUtil.execute("UPDATE Client SET company_name = ?,address = ?,contact_number = ?,email = ? WHERE client_company_id = ?",obj.getName(),obj.getAddress(),obj.getTel(),obj.getEmail(),obj.getCompany_id());
     }
 
     @Override
@@ -66,8 +50,9 @@ public class ClientDAOImpl implements ClientDAO {
     @Override
     public String getId() throws SQLException {
         ResultSet resultSet = SqlUtil.execute("SELECT client_company_id FROM Client ORDER BY client_company_id DESC LIMIT 1");
-        resultSet.next();
-        return resultSet.getString("client_company_id");
+        if(resultSet.next())
+            return resultSet.getString("client_company_id");
+        return null;
     }
 
     @Override
@@ -95,7 +80,7 @@ public class ClientDAOImpl implements ClientDAO {
         }
         return clients;
     }
-
+    @Override
     public Client getValues(String companyName) throws SQLException {
         ResultSet resultSet = SqlUtil.execute("SELECT * FROM Client WHERE company_name = ?",companyName);
         if (resultSet.next()){
@@ -109,7 +94,6 @@ public class ClientDAOImpl implements ClientDAO {
         }
         return null;
     }
-
     @Override
     public List<String> getPhoneNumber() throws SQLException {
        ResultSet resultSet = SqlUtil.execute("SELECT contact_number FROM Client");
@@ -119,7 +103,6 @@ public class ClientDAOImpl implements ClientDAO {
        }
        return number;
     }
-
     @Override
     public List<String> getName() throws SQLException {
        ResultSet resultSet = SqlUtil.execute("SELECT company_name FROM Client");
@@ -128,5 +111,14 @@ public class ClientDAOImpl implements ClientDAO {
            name.add(resultSet.getString("company_name"));
        }
        return name;
+    }
+    @Override
+    public List<String> getIdList() throws SQLException {
+       ResultSet rst = SqlUtil.execute("SELECT client_company_id FROM Client");
+       List<String> idList = new ArrayList<>();
+       while (rst.next()){
+           idList.add(rst.getString("client_company_id"));
+       }
+       return idList;
     }
 }

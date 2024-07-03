@@ -11,6 +11,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.DriverBO;
 import lk.ijse.finalProject.bo.custom.impl.DriverBOImpl;
 import lk.ijse.finalProject.db.Dbconnection;
@@ -42,7 +43,6 @@ public class DriverFormController {
     public Hyperlink hplName5;
     public Hyperlink hplName6;
     public Hyperlink hplName7;
-    public Hyperlink hplName8;
     public Label lblId1;
     public Label lblId2;
     public Label lblId3;
@@ -50,7 +50,6 @@ public class DriverFormController {
     public Label lblId5;
     public Label lblId6;
     public Label lblId7;
-    public Label lblDriver1;
     public Circle profilePicture;
     public Label userName;
     public TextField txtSearchBar;
@@ -64,7 +63,7 @@ public class DriverFormController {
     public Circle profilePicture7;
     @FXML
     BorderPane borderPane;
-    DriverBO driverBO = new DriverBOImpl();
+    DriverBO driverBO = (DriverBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DRIVER);
 
     public void initialize(){
         setProfilePicture();

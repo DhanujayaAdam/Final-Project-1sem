@@ -16,8 +16,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.ClientBO;
+import lk.ijse.finalProject.bo.custom.PackageBO;
 import lk.ijse.finalProject.bo.custom.impl.ClientBOImpl;
+import lk.ijse.finalProject.bo.custom.impl.PackageBOImpl;
 import lk.ijse.finalProject.dto.ClientDTO;
 import lk.ijse.finalProject.entity.tm.ClientTm;
 import lk.ijse.finalProject.dao.custom.impl.PackageDAOImpl;
@@ -62,7 +65,8 @@ public class CompanyFormController implements Initializable {
     public Circle profilePicture4;
     public Circle profilePicture5;
     public BarChart<?,?> barChart1;
-    ClientBO clientBO = new ClientBOImpl();
+    ClientBO clientBO = (ClientBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.CLIENT);
+    PackageBO packageBO = (PackageBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.PACKAGE);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,11 +79,11 @@ public class CompanyFormController implements Initializable {
 
     private void setBarChart() {
         try {
-            int packageCount1 = PackageDAOImpl.getPackageCount1("C1");
-            int packageCount2 = PackageDAOImpl.getPackageCount1("C2");
-            int packageCount3 = PackageDAOImpl.getPackageCount1("C3");
-            int packageCount4 = PackageDAOImpl.getPackageCount1("C4");
-            int packageCount5 = PackageDAOImpl.getPackageCount1("C5");
+            int packageCount1 = packageBO.getPackageCount1("C1");
+            int packageCount2 = packageBO.getPackageCount1("C2");
+            int packageCount3 = packageBO.getPackageCount1("C3");
+            int packageCount4 = packageBO.getPackageCount1("C4");
+            int packageCount5 = packageBO.getPackageCount1("C5");
 
             XYChart.Series series = new XYChart.Series();
             series.getData().add(new XYChart.Data("1",packageCount1));
@@ -140,7 +144,7 @@ public class CompanyFormController implements Initializable {
         txtEmail.requestFocus();
     }
 
-    public void txtSearchOnAction(ActionEvent actionEvent) {
+    public String txtSearchOnAction(ActionEvent actionEvent) {
         String companyName = txtSearchBar.getText();
         try {
             ClientDTO client = clientBO.getCompanyValues(companyName);
@@ -148,16 +152,14 @@ public class CompanyFormController implements Initializable {
             txtAddress.setText(client.getAddress());
             txtPhone.setText(client.getTel());
             txtEmail.setText(client.getEmail());
+            return client.getCompany_id();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+        return null;
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        String name = txtCompany.getText();
-        String address = txtAddress.getText();
-        String phone = txtPhone.getText();
-        String email = txtEmail.getText();
         try {
             String currentId = clientBO.getCompanyId();
             String availableId ;
@@ -208,7 +210,7 @@ public class CompanyFormController implements Initializable {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String searchName = txtSearchBar.getText();
+        String id = txtSearchOnAction(actionEvent);
         String name = txtCompany.getText();
         String address = txtAddress.getText();
         String phone = txtPhone.getText();
@@ -216,7 +218,7 @@ public class CompanyFormController implements Initializable {
         if (isValided()) {
             boolean isUpdated = false;
             try {
-                isUpdated = clientBO.updateCompany(new ClientDTO(name,address,phone,email));
+                isUpdated = clientBO.updateCompany(new ClientDTO(id,name,address,phone,email));
                 if (isUpdated) {
                     clearFields();
                     setTable();

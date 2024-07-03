@@ -19,4 +19,7 @@ public interface ClientBO extends SuperBO {
     public ClientDTO getCompanyValues(String companyName) throws SQLException;
     public List<String> getCompanyName() throws SQLException;
     public List<String> getNumber() throws SQLException;
+    public List<String> getCompanyIdList() throws SQLException;
+    public List<String> getCompany() throws SQLException;
+    public List<String> getAddress() throws SQLException;
 }

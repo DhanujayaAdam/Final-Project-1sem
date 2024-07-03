@@ -5,65 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f2dabec-2685-459b-9e48-9371582c313d" name="Changes" comment="git push">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/SuperBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ClientBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/DeliveryDetailBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/DriverBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ServiceSheduleBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/UserBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleToBeServicedBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ClientBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DeliveryDetailBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DriverBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ServiceScheduleBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/UserBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleTOBeServicedBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/CrudDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/SqlUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/SuperDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ClientDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/DeliveryDetailDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/DriverDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PackageDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PaymentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/RouteDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceCenterDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceScheduleDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ShipmentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleToBeServicedDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ClientDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/DeliveryDetailDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/DriverDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/PackageDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/PackageSaveDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/PaymentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/RouteDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ServiceCenterDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ServiceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ServicePaymentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ServiceScheduleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ServiceTableDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/ShipmentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/VehicleDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/VehicleToBeServiceDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/VehicleReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/VehicleSave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/PackageBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/PaymentBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/QueryBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/RouteBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ServiceBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ServiceCenterBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ShipmentBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/PackageBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/PaymentBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/QueryBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/RouteBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ServiceBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ServiceCenterBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ShipmentBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/QueryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/QueryDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/DB/Dbconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/db/Dbconnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/AddVehicleCenterFormController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/BOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/BOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ClientBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ClientBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ServiceSheduleBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/ServiceSheduleBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleToBeServicedBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/VehicleToBeServicedBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ClientBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ClientBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DeliveryDetailBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DeliveryDetailBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DriverBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/DriverBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ServiceScheduleBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/ServiceScheduleBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/UserBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/UserBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleTOBeServicedBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/bo/custom/impl/VehicleTOBeServicedBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/CompanyFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/CompanyFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/CompanyOptionFormController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DashboardFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DashboardFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DashboardFormController2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverAddFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverAddFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverUpdateFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/DriverUpdateFormController.java" afterDir="false" />
@@ -71,59 +43,44 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/LoginFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/PackageFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/PackageFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/RegisterFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/RegisterFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/RoutFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/ServicceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/ServiceFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/TipsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/TipsFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/ServiceFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/ServiceFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleAddFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleAddFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleSelectionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleSelectionForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleUpdateFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleUpdateFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleViewFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/VehicleViewFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/controller/ViewEmployeeFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/DeliveryDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/DeliveryDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Package.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Package.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/PackageSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/PackageSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/ServiceCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/ServiceCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/ServiceSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/ServiceSchedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/ServiceTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/ServiceTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/ServisePayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/ServisePayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Shipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Shipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/VehicleReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/VehicleReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/VehicleSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dto/VehicleSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/VehicleToBeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/VehicleToBeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/tm/ClientTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/tm/ClientTm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/tm/PackageTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/tm/PackageTm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/tm/ServiceTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/tm/ServiceTm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/model/tm/VehicleTm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/tm/VehicleTm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ClientRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ClientDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/DeliveryDetailRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DeliveryDetailDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/DriverRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DriverDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/PackageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PackageDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/PackageSaveRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PackageSaveRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/PaymentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PaymentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/RouteRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/RoutDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ServiceCenterRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceCenterDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ServicePaymentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServicePaymentRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ServiceRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ServiseScheduleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceScheduleDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/ShipmentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ShipmentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/VehicleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/VehicleReporRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/VehicleSaveRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/repository/VehicleToBeServiceRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleToBeServicedDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PackageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PackageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PaymentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/PaymentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/RouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/RouteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceCenterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceCenterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceScheduleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ServiceScheduleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ShipmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/ShipmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleToBeServicedDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/VehicleToBeServicedDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ClientDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ClientDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DeliveryDetailDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DeliveryDetailDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DriverDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/DriverDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PackageDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PackageDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PackageSaveRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PaymentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/PaymentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/RoutDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/RoutDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceCenterDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceCenterDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServicePaymentRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceScheduleDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ServiceScheduleDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ShipmentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/ShipmentDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleToBeServicedDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/dao/custom/impl/VehicleToBeServicedDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/PackageSave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/ServisePayment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/VehicleReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/finalProject/entity/VehicleSave.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/ServiceForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ServiceForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/addServiceCenterForm.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/companyOptionPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/loginForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/routeForm.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/tipsForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/tipsForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/viewEmployee.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/dashboard2.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,17 +92,21 @@
       <list>
         <option value="Kotlin Class" />
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/22/javafx-graphics-22-linux.jar!/javafx/scene/image/Image.class" root0="SKIP_INSPECTION" />
     <setting file="jar:///usr/lib/jvm/jdk-17-oracle-x64/lib/src.zip!/java.base/java/lang/IllegalArgumentException.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -678,7 +639,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718431242614</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="git push">
+      <option name="closed" value="true" />
+      <created>1719817118638</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1719817118638</updated>
+    </task>
+    <task id="LOCAL-00048" summary="git push">
+      <option name="closed" value="true" />
+      <created>1719817143939</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1719817143939</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

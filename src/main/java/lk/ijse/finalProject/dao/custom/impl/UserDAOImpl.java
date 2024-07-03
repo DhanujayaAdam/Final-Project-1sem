@@ -28,8 +28,9 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public String getId() throws SQLException {
         ResultSet resultSet = SqlUtil.execute("SELECT user_id FROM User ORDER BY user_id DESC LIMIT 1");
-        resultSet.next();
-        return resultSet.getString("user_id");
+        if(resultSet.next())
+            return resultSet.getString("user_id");
+        return null;
     }
 
     @Override

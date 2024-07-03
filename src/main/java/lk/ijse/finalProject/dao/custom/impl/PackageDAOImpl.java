@@ -1,5 +1,7 @@
 package lk.ijse.finalProject.dao.custom.impl;
 
+import lk.ijse.finalProject.dao.SqlUtil;
+import lk.ijse.finalProject.dao.custom.PackageDAO;
 import lk.ijse.finalProject.db.Dbconnection;
 import lk.ijse.finalProject.entity.Package;
 
@@ -9,178 +11,101 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-public class PackageDAOImpl {
-    public static List<String > getCompanyId() throws SQLException {
-        String sql = "SELECT client_company_id FROM Client";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+public class PackageDAOImpl implements PackageDAO {
+    @Override
+    public List<String> getCompanyId() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT client_company_id FROM Client_order ORDER BY order_id DESC LIMIT 4");
         List<String> idList = new ArrayList<>();
         while (resultSet.next()){
             idList.add(resultSet.getString(1));
         }
         return idList;
     }
+    @Override
+    public String getTrackingNumber() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 5");
+        if (resultSet.next())
+            return resultSet.getString("tracking_number");
+        return null;
+    }
+    @Override
+    public String getVehicleId(String packageId) throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT vehicle_id FROM Client_order WHERE package_id = ?",packageId);
+        rst.next();
+        return rst.getString("vehicle_id");
+    }
+    @Override
+    public int getPackageCount1(String c1) throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT COUNT(*) package_count FROM Client_order WHERE client_company_id =?",c1);
+        if(rst.next())
+            return rst.getInt("package_count");
+        return 0;
+    }
+    @Override
+    public boolean add(Package obj) throws SQLException {
+        return SqlUtil.execute("INSERT INTO Client_order VALUES(?,?,?,?,?,?,?,?)",obj.getOrderId(),obj.getTrackingNumber(),obj.getCompanyId(),obj.getTypeOfGood(),obj.getWeight(),obj.getDeliveryType(),obj.getBorrowDAte(),obj.getShipmentId());
+    }
 
-    public static String getCurrentId() throws SQLException {
-        String sql = "SELECT order_id FROM Client_order ORDER BY order_id DESC LIMIT 1";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            return resultSet.getString(1);
-        }
+    @Override
+    public boolean update(Package obj) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public String getId() throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT order_id FROM Client_order ORDER BY order_id DESC LIMIT 1");
+        if (rst.next())
+            return rst.getString("order_id");
+        return null;
+    }
+    @Override
+    public String generateNewId(String id) {
         return null;
     }
 
-    public static String getAvailableId(String currentId) {
-        if (currentId != null){
-            String[] split = currentId.split("P");
-            int idNum = Integer.parseInt(split[1]);
-            return "P" + ++idNum;
-        }
-        return "P1";
-    }
-
-    public static String getTrackingNumber() throws SQLException {
-        String sql = "SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-           return resultSet.getString("tracking_number");
-        }
+    @Override
+    public Package getObject(String id) throws SQLException {
         return null;
     }
-
-    public static String getAvailableNumber(String currentTrackingNUmber) {
-        if (currentTrackingNUmber != null){
-            String[] split = currentTrackingNUmber.split("TR");
-            int idNum = Integer.parseInt(split[1]);
-            return "TR" + ++idNum;
-        } else {
-            return "TR1";
-        }
-    }
-    public static String getCurrentShipmenId() throws SQLException {
-        String sql = "SELECT shipment_id FROM Shipment ORDER BY shipment_id DESC LIMIT 1";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            return resultSet.getString("shipment_id");
-        }
-        return null;
-    }
-
-    public static String getAvailableShipmentId(String currentShipmentId) {
-        if (currentShipmentId != null){
-            String[] split = currentShipmentId.split("S");
-            int idNum = Integer.parseInt(split[1]);
-            return "S" + ++idNum;
-        }
-        return "S1";
-    }
-
-    public static boolean savePackage(Package savePackage) throws SQLException {
-        String sql = "INSERT INTO Client_order VALUES(?,?,?,?,?,?,?,?)";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,savePackage.getOrderId());
-        pstm.setObject(2,savePackage.getTrackingNumber());
-        pstm.setObject(3,savePackage.getCompanyId());
-        pstm.setObject(4,savePackage.getTypeOfGood());
-        pstm.setDouble(5,savePackage.getWeight());
-        pstm.setObject(6,savePackage.getDeliveryType());
-        pstm.setDate(7,savePackage.getBorrowDAte());
-        pstm.setObject(8,savePackage.getShipmentId());
-        return pstm.executeUpdate() > 0;
-    }
-
-    public static List<Package> getAll(String packageId) throws SQLException {
-        String sql = "SELECT * FROM Client_order WHERE order_id = ?";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,packageId);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<Package> getAll() throws SQLException {
+        ResultSet rst = SqlUtil.execute("SELECT * FROM Client_order");
         List<Package> packageList = new ArrayList<>();
-        if (resultSet.next()){
-            String id = resultSet.getString(1);
-            String trNumber = resultSet.getString(2);
-            String companyId = resultSet.getString(3);
-            String typeOfGood = resultSet.getString(4);
-            double weight = resultSet.getDouble(5);
-            String deliveryType = resultSet.getString(6);
-            Date date = resultSet.getDate(7);
-            String shipmentId = resultSet.getString(8);
-            Package pack = new Package(id,trNumber,companyId,typeOfGood,weight,deliveryType,date,shipmentId);
-            packageList.add(pack);
+        while (rst.next()){
+            packageList.add(new Package(rst.getString(1),rst.getString(2),rst.getString(3),rst.getString(4), rst.getDouble(5),rst.getString(6),rst.getDate(7),rst.getString(8)));
         }
         return packageList;
     }
-
-    public static List<Package> getAll() throws SQLException {
-        String sql = "SELECT * FROM Client_order";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        List<Package> packageList = new ArrayList<>();
-        while (resultSet.next()){
-            String id = resultSet.getString(1);
-            String trackingNumber = resultSet.getString(2);
-            String company_id = resultSet.getString(3);
-            String typeOfGood = resultSet.getString(4);
-            double weight = resultSet.getDouble(5);
-            String type = resultSet.getString(6);
-            Date date = resultSet.getDate(7);
-            String shipmentId = resultSet.getString(8);
-            Package pack = new Package(id,trackingNumber,company_id,typeOfGood,weight,type,date,shipmentId);
-            packageList.add(pack);
-        }
-        return packageList;
-    }
-
-    public static void remove(int selectedIndex) {
-
-    }
-
-    public static List<String> getRecentPackage() throws SQLException {
-        String sql = "SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        List<String> trackingList = new ArrayList<>();
-        while (resultSet.next()){
-            String trackingNumber = resultSet.getString("tracking_number");
-            trackingList.add(trackingNumber);
-        }
-        return trackingList;
-    }
-
-    public static List<String> getTypeOfGood() throws SQLException {
-        String sql = "SELECT type_of_good FROM Client_order ORDER BY order_id DESC LIMIT 5";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<String> getTypeOfGood() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT type_of_good FROM Client_order ORDER BY order_id DESC LIMIT 5");
         List<String> typeList = new ArrayList<>();
         while (resultSet.next()){
-            String typeOfGood = resultSet.getString("type_of_good");
-            typeList.add(typeOfGood);
+            typeList.add(resultSet.getString("type_of_good"));
         }
         return typeList;
     }
-
-    public static int getPackageCount1(String c) throws SQLException {
-        String sql = "SELECT COUNT(*) package_count FROM Client_order WHERE client_company_id =?";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setObject(1,c);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
-            return resultSet.getInt("package_count");
-        }
-        return 0;
-    }
-
-    public static List<String> getTrackingNumbers() throws SQLException {
-        String sql = "SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 4";
-        PreparedStatement pstm = Dbconnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+    @Override
+    public List<String> getTrackingNumbers() throws SQLException {
+        ResultSet resultSet = SqlUtil.execute("SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 4");
         List<String> trackList = new ArrayList<>();
-        if (resultSet.next()){
+        while (resultSet.next()){
             trackList.add("Tracking Number- " + resultSet.getString("tracking_number"));
         }
         return trackList;
     }
-
+    @Override
+    public List<String> getPackageList() throws SQLException {
+       ResultSet resultSet = SqlUtil.execute("SELECT tracking_number FROM Client_order ORDER BY order_id DESC LIMIT 5");
+       ArrayList<String> trackingList = new ArrayList<>();
+       while (resultSet.next()){
+           trackingList.add(resultSet.getString("tracking_number"));
+       }
+       return trackingList;
+    }
 }

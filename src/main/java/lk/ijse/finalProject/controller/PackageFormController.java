@@ -2,6 +2,7 @@ package lk.ijse.finalProject.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -13,18 +14,24 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.finalProject.bo.custom.VehicleBO;
-import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.bo.BOFactory;
+import lk.ijse.finalProject.bo.custom.*;
+import lk.ijse.finalProject.bo.custom.impl.*;
+import lk.ijse.finalProject.controller.mail.Mail;
 import lk.ijse.finalProject.dao.custom.impl.*;
+import lk.ijse.finalProject.db.Dbconnection;
+import lk.ijse.finalProject.dto.*;
 import lk.ijse.finalProject.entity.*;
 import lk.ijse.finalProject.entity.Package;
 import lk.ijse.finalProject.entity.tm.PackageTm;
 import lk.ijse.finalProject.util.Regex;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -69,7 +76,14 @@ public class PackageFormController implements Initializable {
     public Label tracking3;
     public Label tracking4;
     public Label tracking5;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
+    PackageBO packageBO = (PackageBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.PACKAGE);
+    ShipmentBO shipmentBO = (ShipmentBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.SHIPMENT);
+    RouteBO routeBO = (RouteBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.ROUTE);
+    DeliveryDetailBO deliveryDetailBO = (DeliveryDetailBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DELIVERY_DETAIL);
+    DriverBO driverBO = (DriverBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.DRIVER);
+    VehicleToBeServicedBO vehicleToBeServicedBO = (VehicleToBeServicedBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE_TO_BE_SERVICED);
+    ClientBO clientBO = (ClientBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.CLIENT);
 
     public void sendUser(String dbUser) {
         user = dbUser;
@@ -92,7 +106,7 @@ public class PackageFormController implements Initializable {
 
     private void setpackageName() {
         try {
-            List<String> trackingList = PackageDAOImpl.getRecentPackage();
+            List<String> trackingList = packageBO.getPackageList();
 
             if (trackingList.size() < 1){
                 tracking1.setText("No Data");
@@ -120,7 +134,7 @@ public class PackageFormController implements Initializable {
                 tracking5.setText(trackingList.get(4));
             }
 
-            List<String> packageList = PackageDAOImpl.getTypeOfGood();
+            List<String> packageList = packageBO.getTypeOfGood();
             if (packageList.size() < 1){
                 packageType1.setText("No Data");
             } else {
@@ -181,8 +195,8 @@ public class PackageFormController implements Initializable {
     private void setTable() {
         ObservableList<PackageTm> obList = FXCollections.observableArrayList();
         try {
-            List<Package> packageList = PackageDAOImpl.getAll();
-            for (Package pack : packageList){
+            List<PackageDTO> packageList = packageBO.getAllPackage();
+            for (PackageDTO pack : packageList){
                 PackageTm tm = new PackageTm(
                         pack.getOrderId(),
                         pack.getTrackingNumber(),
@@ -228,55 +242,150 @@ public class PackageFormController implements Initializable {
 
         try {
             System.out.println("Come to try catch1");
-            String currentId = PackageDAOImpl.getCurrentId();
+            String currentId = packageBO.getPackageId();
             System.out.println("is ok1");
-            String availableId = PackageDAOImpl.getAvailableId(currentId);
+            String availableId = null;
+            if (currentId != null) {
+                String[] split = currentId.split("P");
+                int idNum = Integer.parseInt(split[1]);
+                availableId = "P" + ++idNum;
+            } else {
+                availableId = "P1";
+            }
+
             System.out.println("is ok2");
 
-            String currentTrackingNUmber = PackageDAOImpl.getTrackingNumber();
+            String currentTrackingNUmber = packageBO.getTrackingNumber();
             System.out.println("is ok3");
-            String availableNumber = PackageDAOImpl.getAvailableNumber(currentTrackingNUmber);
-            System.out.println("is ok4");
+            String availableNumber = null;
+            if (currentTrackingNUmber != null) {
+                String[] split = currentTrackingNUmber.split("TR");
+                int idNum = Integer.parseInt(split[1]);
+                availableNumber = "TR" + ++idNum;
+            } else {
+                availableNumber = "TR1";
 
-            String currentShipmentId = PackageDAOImpl.getCurrentShipmenId();
+            }
+            System.out.println("is ok4");
+            String currentShipmentId = shipmentBO.getCurrentShipmenId();
             System.out.println("is ok5");
-            String availableShipmentId = PackageDAOImpl.getAvailableShipmentId(currentShipmentId);
+            String availableShipmentId = null;
+            if (currentShipmentId != null) {
+                String[] split = currentShipmentId.split("S");
+                int idNum = Integer.parseInt(split[1]);
+                availableShipmentId = "S" + ++idNum;
+            } else {
+                availableShipmentId = "S1";
+            }
+
             System.out.println("is ok6");
 
-          //  String destination = getTransportMode(routId);
-            String destination = RoutDAOImpl.getDestination(routId);
+            String destination = routeBO.getDestination(routId);
             System.out.println("is ok7");
-            String mode = RoutDAOImpl.getMode(destination);
+            String mode = getMode(destination);
             System.out.println("is ok8");
 
-            double distance = Double.parseDouble(RoutDAOImpl.getDistance(routId));
+
+            double distance = Double.parseDouble(routeBO.getDistance(routId));
             System.out.println("is ok9");
-            String description = RoutDAOImpl.getDescription(routId);
+            String description = routeBO.getDescription(routId);
             System.out.println("is ok10");
 
-            Shipment shipment = new Shipment(availableShipmentId,shipmentCost,routId);
-            Package savePackage = new Package(availableId,availableNumber,companyId,typeOfGood,weight,mode,date,availableShipmentId);
+            Route route = new Route(routId, "Panadura", destination, description, distance);
 
-            DeliveryDetail deliveryDetail = new DeliveryDetail(availableShipmentId,vehicleId,destination);
-            Route route = new Route(routId,"Panadura",destination,description,distance);
-
-            PackageSave packageSave = new PackageSave(savePackage,shipment,deliveryDetail,route,comboVehicleId.getValue());
-            System.out.println("go to this");
-            boolean isPlaced = PackageSaveRepo.placeClientOrder(packageSave);
-            if (isPlaced){
-                new Alert(Alert.AlertType.CONFIRMATION,"Package placed successfully").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR,"Package placed unsuccessfully").show();
+            //save package transaction
+            Connection connection = Dbconnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            try {
+                System.out.println("Invoke to first statement");
+                System.out.println(availableShipmentId);
+                boolean isSave = shipmentBO.addShipment(new ShipmentDTO(availableShipmentId, shipmentCost, routId));
+                if (!isSave) {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                    new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
+                    return;
+                }
+                System.out.println("invoke to statement1");
+                System.out.println(availableId+" , "+availableNumber);
+                boolean isSaved = packageBO.addPackage(new PackageDTO(availableId, availableNumber, companyId, typeOfGood, weight, mode, date, availableShipmentId));
+                if (!isSaved) {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                    new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
+                    return;
+                }
+                System.out.println("Invoke to statement2");
+                boolean isOk = deliveryDetailBO.saveDeliveryDetail(new DeliveryDetailDTO(availableShipmentId, vehicleId, destination));
+                if (!isOk) {
+                    connection.rollback();
+                    new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
+                    return;
+                }
+                System.out.println("Invoke to statement3");
+                boolean isUpdated = vehicleBO.updateVehicleDistance(vehicleId, distance);
+                if (!isUpdated) {
+                    connection.rollback();
+                    new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
+                    return;
+                }
+                System.out.println("Invoke to statement4");
+                double currentDistance = vehicleToBeServicedBO.getCurrentDistance(vehicleId);
+                if (currentDistance >= 5000) {
+                    System.out.println("get current distance ?");
+                    String title = "Vehicle Service Information";
+                    String body = "Vehicle " + vehicleId + ",Your service time has come";
+                    DriverDTO dr = driverBO.getDriver(vehicleId);
+                    System.out.println("dr :" + dr);
+                    String email = dr.getEmail();
+                    System.out.println(email);
+                    Mail mail = new Mail();
+                    mail.setMail(email, title, body);
+                    System.out.println("Send successfull");
+                }
+                if (currentDistance >= 10000) {
+                    String title = "Tyre Replacement Information";
+                    String body = "Vehicle " + vehicleId + ",Your Tyre Replacement has come";
+                    DriverDTO dr = driverBO.getDriver(vehicleId);
+                    String email = dr.getEmail();
+                    Mail mail = new Mail();
+                    mail.setMail(email, title, body);
+                }
+                if (currentDistance == 10100) {
+                    vehicleToBeServicedBO.clearDistance(vehicleId);
+                }
+                System.out.println("Invoke to this");
+                boolean isUpdate = vehicleToBeServicedBO.updateCurrentDistance(distance, vehicleId);
+                if (!isUpdate) {
+                    connection.rollback();
+                    new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
+                    return;
+                }
+                System.out.println("Commit");
+                connection.commit();
+                new Alert(Alert.AlertType.CONFIRMATION, "Package placed successfully").show();
+            } catch (Exception e) {
+                connection.rollback();
+                new Alert(Alert.AlertType.ERROR, "Package placed unsuccessfully").show();
             }
-            System.out.println("end try catch");
-        } catch (SQLException e) {
+        }catch (Exception e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
+    }
+
+    public  String getMode(String destination) {
+        if (destination.equals("Colombo")){
+            return "Ship";
+        } else if (destination.equals("Katunayake")){
+            return "AirPlane";
+        } else {
+            return "Ship";
         }
     }
 
     private String getTransportMode(String routId) {
         try {
-            String destination = RoutDAOImpl.getDestination(routId);
+            String destination = routeBO.getDestination(routId);
             return destination;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage(),ButtonType.OK).show();
@@ -318,7 +427,7 @@ public class PackageFormController implements Initializable {
     private void setComboRoute() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = RoutDAOImpl.getId();
+            List<String> idList = routeBO.getIdList();
             for (String id : idList){
                 obList.add(id);
             }
@@ -350,7 +459,7 @@ public class PackageFormController implements Initializable {
     private void setCombo() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> companyId = ClientDAOImpl.getCompanyId();
+            List<String> companyId = clientBO.getCompanyIdList();
             for (String id : companyId){
                 obList.add(id);
             }
@@ -370,15 +479,16 @@ public class PackageFormController implements Initializable {
 
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String packageId = txtSearchBar.getText();
+        ObservableList<Object> items = FXCollections.observableArrayList();
         try {
-            List<Package> all = PackageDAOImpl.getAll(packageId);
-            txtType.setText(String.valueOf(all.get(3)));
-            txtWeight.setText(String.valueOf(all.get(4)));
-            txtDate.setText(String.valueOf(all.get(6)));
-            comboId.setItems((ObservableList<String>) all.get(2));
-            ObservableList<String> routeId = ShipmentDAOImpl.getRouteId(String.valueOf(all.get(8)));
+            PackageDTO packageDTO = packageBO.getPackageObject(packageId);
+            txtType.setText(packageDTO.getDeliveryType());
+            txtWeight.setText(String.valueOf(packageDTO.getWeight()));
+            txtDate.setText(String.valueOf(packageDTO.getBorrowDAte()));
+            ObservableList<String> routeId = shipmentBO.getRouteIdList(packageDTO.getShipmentId());
             comboRoute.setItems(routeId);
-            comboVehicleId.setItems((ObservableList<String>) all.get(5));
+            comboDescription.setPromptText(packageDTO.getTypeOfGood());
+            comboVehicleId.setPromptText(packageBO.getVehicleId(packageId));
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage(),ButtonType.CANCEL).show();
@@ -420,11 +530,20 @@ public class PackageFormController implements Initializable {
         String description = comboDescription.getValue();
         double distance = Double.parseDouble(txtDistance.getText());
         try {
-            String currentRouteId = RoutDAOImpl.getCurrentRouteId();
-            String nextAvailableId = RoutDAOImpl.getNextAvailableId(currentRouteId);
+            String currentRouteId = routeBO.getRouteId();
+            String nextAvailableId = null;
+            if (currentRouteId != null){
+                if (currentRouteId != null){
+                    String[] split = currentRouteId.split("R");
+                    int idNum = Integer.parseInt(split[1]);
+                    nextAvailableId = "R" + ++idNum;
+                } else {
+                    nextAvailableId = "R1";
+                }
+            }
+
             if (isValided()) {
-                Route route = new Route(nextAvailableId, location, destination, description, distance);
-                boolean isSaved = RoutDAOImpl.saveRoute(route);
+                boolean isSaved = routeBO.addRoute(new RouteDTO(nextAvailableId, location, destination, description, distance));
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Route saved successfully").show();
                 } else {

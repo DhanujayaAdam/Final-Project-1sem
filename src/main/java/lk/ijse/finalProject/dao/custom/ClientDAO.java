@@ -13,5 +13,7 @@ public interface ClientDAO extends CrudDAO<Client> {
     public Client getValues(String companyName) throws SQLException;
     public List<String> getPhoneNumber() throws SQLException;
     public List<String> getName() throws SQLException;
-
+    public List<String> getIdList() throws SQLException;
+    public List<String> getCompany() throws SQLException;
+    public List<String> getAddress() throws SQLException;
 }

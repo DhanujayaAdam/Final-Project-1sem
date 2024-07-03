@@ -8,4 +8,5 @@ import java.sql.SQLException;
 public interface VehicleToBeServicedDAO extends CrudDAO<VehicleToBeService> {
     public double getCurrentDistance(String vehicleId) throws SQLException;
     public boolean clearDistance(String vehicleId) throws SQLException;
+    public boolean updateCurrentDistance(double distance,String vehicleId) throws SQLException;
 }

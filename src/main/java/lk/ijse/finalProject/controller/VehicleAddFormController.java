@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.ServiceSheduleBO;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
 import lk.ijse.finalProject.bo.custom.VehicleToBeServicedBO;
@@ -39,9 +40,9 @@ public class VehicleAddFormController {
     public AnchorPane rootNode;
     public String rest;
     public String absolutePath;
-    VehicleBO vehicleBO = new VehicleBOImpl();
-    ServiceSheduleBO serviceSheduleBO = new ServiceScheduleBOImpl();
-    VehicleToBeServicedBO vehicleToBeServicedBO = new VehicleTOBeServicedBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
+    ServiceSheduleBO serviceSheduleBO = (ServiceSheduleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.SERVICE_SCHEDULE);
+    VehicleToBeServicedBO vehicleToBeServicedBO = (VehicleToBeServicedBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE_TO_BE_SERVICED);
     public void btnClearOnAction(ActionEvent actionEvent) {
         clearFields();
     }

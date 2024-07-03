@@ -1,6 +1,8 @@
 package lk.ijse.finalProject.bo.custom.impl;
 
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
+import lk.ijse.finalProject.dao.DAOFactory;
 import lk.ijse.finalProject.dao.custom.VehicleDAO;
 import lk.ijse.finalProject.dao.custom.impl.VehicleDAOImpl;
 import lk.ijse.finalProject.dto.VehicleDTO;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class VehicleBOImpl implements VehicleBO {
-    VehicleDAO vehicleDAO = new VehicleDAOImpl();
+    VehicleDAO vehicleDAO = (VehicleDAO) DAOFactory.getDaoFactory().getInstance(DAOFactory.DaoType.VEHICLE);
     @Override
     public boolean saveVehicle(VehicleDTO vehicle) throws SQLException {
         System.out.println(vehicle);
@@ -63,4 +65,16 @@ public class VehicleBOImpl implements VehicleBO {
     public List<String> getVehicleNumber() throws SQLException {
         return vehicleDAO.getVehicleNumber();
     }
+
+    @Override
+    public boolean updateVehicleDistance(String vehicleId, double distance) throws SQLException {
+        return vehicleDAO.updateVehicleDistance(vehicleId,distance);
+    }
+
+    @Override
+    public double getCurrentDistance(String vehicleId) throws SQLException {
+        return vehicleDAO.getCurrentDistance(vehicleId);
+    }
+
+
 }

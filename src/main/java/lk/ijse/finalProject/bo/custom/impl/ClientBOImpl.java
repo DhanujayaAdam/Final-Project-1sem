@@ -1,6 +1,8 @@
 package lk.ijse.finalProject.bo.custom.impl;
 
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.ClientBO;
+import lk.ijse.finalProject.dao.DAOFactory;
 import lk.ijse.finalProject.dao.custom.ClientDAO;
 import lk.ijse.finalProject.dao.custom.impl.ClientDAOImpl;
 import lk.ijse.finalProject.dto.ClientDTO;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientBOImpl implements ClientBO {
-    ClientDAO clientDAO = new ClientDAOImpl();
+    ClientDAO clientDAO = (ClientDAO) DAOFactory.getDaoFactory().getInstance(DAOFactory.DaoType.CLIENT);
     @Override
     public boolean addCompany(ClientDTO obj) throws SQLException {
         return clientDAO.add(new Client(obj.getCompany_id(), obj.getName(), obj.getAddress(), obj.getTel(),obj.getEmail()));
@@ -67,5 +69,20 @@ public class ClientBOImpl implements ClientBO {
     @Override
     public List<String> getNumber() throws SQLException {
         return clientDAO.getPhoneNumber();
+    }
+
+    @Override
+    public List<String> getCompanyIdList() throws SQLException {
+        return clientDAO.getIdList();
+    }
+
+    @Override
+    public List<String> getCompany() throws SQLException {
+        return clientDAO.getCompany();
+    }
+
+    @Override
+    public List<String> getAddress() throws SQLException {
+        return clientDAO.getAddress();
     }
 }

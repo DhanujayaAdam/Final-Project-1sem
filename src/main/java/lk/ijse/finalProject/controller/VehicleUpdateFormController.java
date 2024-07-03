@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
 import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
 import lk.ijse.finalProject.dto.VehicleDTO;
@@ -41,7 +42,7 @@ public class VehicleUpdateFormController implements Initializable {
     public String rest;
     public JFXComboBox<String> comboId;
     public AnchorPane root;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -92,10 +93,10 @@ public class VehicleUpdateFormController implements Initializable {
     public void btnChooseImageOnAction(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open My Files");
-        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources"));
+        fileChooser.setInitialDirectory(new File("/home/dhanujaya/Desktop/Final-Project/src/main/resources"));
         File selectedFile = fileChooser.showOpenDialog(null);
         String absolutePath = selectedFile.getAbsolutePath();
-        String[] split =absolutePath.split("/home/dhanujaya/Desktop/FinalProject/Final-Project/src/main/resources");
+        String[] split =absolutePath.split("/home/dhanujaya/Desktop/Final-Project/src/main/resources");
         rest = split[1];
         Image image = new Image(String.valueOf(this.getClass().getResource(rest)));
         vehicleProfile.setFill(new ImagePattern(image));

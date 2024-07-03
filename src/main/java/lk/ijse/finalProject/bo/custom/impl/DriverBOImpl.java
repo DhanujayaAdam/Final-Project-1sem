@@ -1,6 +1,8 @@
 package lk.ijse.finalProject.bo.custom.impl;
 
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.DriverBO;
+import lk.ijse.finalProject.dao.DAOFactory;
 import lk.ijse.finalProject.dao.custom.DriverDAO;
 import lk.ijse.finalProject.dao.custom.impl.DriverDAOImpl;
 import lk.ijse.finalProject.dto.DriverDTO;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DriverBOImpl implements DriverBO {
-    DriverDAO driverDAO = new DriverDAOImpl();
+    DriverDAO driverDAO = (DriverDAO) DAOFactory.getDaoFactory().getInstance(DAOFactory.DaoType.DRIVER);
 
     @Override
     public boolean addDriver(DriverDTO driver) throws SQLException {

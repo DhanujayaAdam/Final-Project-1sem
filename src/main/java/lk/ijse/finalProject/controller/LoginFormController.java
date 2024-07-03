@@ -14,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.UserBO;
 import lk.ijse.finalProject.bo.custom.impl.UserBOImpl;
 import lk.ijse.finalProject.util.Regex;
@@ -33,7 +34,7 @@ public class LoginFormController {
     public ImageView imvBlind;
     public ImageView imvEye;
     public JFXButton btnLogin;
-    UserBO userBO = new UserBOImpl();
+    UserBO userBO = (UserBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.USER);
 
     public void initialize(){}
 

@@ -20,6 +20,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import lk.ijse.finalProject.bo.BOFactory;
+import lk.ijse.finalProject.bo.custom.ClientBO;
+import lk.ijse.finalProject.bo.custom.PackageBO;
+import lk.ijse.finalProject.bo.custom.impl.PackageBOImpl;
 import lk.ijse.finalProject.dao.custom.impl.ClientDAOImpl;
 import lk.ijse.finalProject.dao.custom.impl.PackageDAOImpl;
 import lk.ijse.finalProject.dao.custom.impl.PaymentDAOImpl;
@@ -80,6 +84,8 @@ public class DashboardFormController implements Initializable {
     public Circle vehicle2;
     public Circle vehicle3;
     public Circle vehicle4;
+    PackageBO packageBO = (PackageBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.PACKAGE);
+    ClientBO clientBO = (ClientBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.CLIENT);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,41 +94,66 @@ public class DashboardFormController implements Initializable {
         setUserName();
         setProfilePicture();
         setDate();
-        //setLineChart();
+        setLineChart();
+        setBarChart();
     }
 
     private void setLineChart() {
-        ObservableList<String> obList = FXCollections.observableArrayList();
-        try {
-            List<String> profits = PaymentDAOImpl.getProfit();
-            for (String profit : profits){
-                obList.add(profit);
 
-            }
-            XYChart.Series series1 = new XYChart.Series();
-            series1.setName("Profit");
-            series1.setData(obList);
-            lineChart.getData().add(series1);
+        XYChart.Series series1 = new XYChart.Series();
+        series1.getData().add(new XYChart.Data("1",4));
+        series1.getData().add(new XYChart.Data("2",3));
+        series1.getData().add(new XYChart.Data("3",7));
+        series1.getData().add(new XYChart.Data("4",7));
+        series1.setName("Expenses");
+
+        lineChart.getData().add(series1);
+
+        XYChart.Series series2 = new XYChart.Series();
+        series2.getData().add(new XYChart.Data("1",6));
+        series2.getData().add(new XYChart.Data("2",5));
+        series2.getData().add(new XYChart.Data("3",6));
+        series2.getData().add(new XYChart.Data("4",7));
+        series2.setName("Income");
+
+        lineChart.getData().add(series2);
+
+        XYChart.Series series3 = new XYChart.Series();
+        series3.getData().add(new XYChart.Data("1",2));
+        series3.getData().add(new XYChart.Data("2",2));
+        series3.getData().add(new XYChart.Data("3",1));
+        series3.getData().add(new XYChart.Data("4",0));
+        series3.setName("Profit");
+
+        lineChart.getData().add(series3);
+
+    }
+    private void setBarChart() {
+        try {
+            int packageCount1 = packageBO.getPackageCount1("C1");
+            int packageCount2 = packageBO.getPackageCount1("C2");
+            int packageCount3 = packageBO.getPackageCount1("C3");
+            int packageCount4 = packageBO.getPackageCount1("C4");
+            int packageCount5 = packageBO.getPackageCount1("C5");
+
+            XYChart.Series series = new XYChart.Series();
+            series.getData().add(new XYChart.Data("1",packageCount1));
+            series.getData().add(new XYChart.Data("2",packageCount2));
+            series.getData().add(new XYChart.Data("3",packageCount3));
+            series.getData().add(new XYChart.Data("4",packageCount4));
+            series.getData().add(new XYChart.Data("5",packageCount5));
+            barChart.getData().add(series);
+            barChart.setTitle("Company Packages");
+            userName.setText("admin");
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-
-
-//        XYChart.Series series1 = new XYChart.Series();
-//        series1.getData().add(new XYChart.Data("1",4));
-//        series1.getData().add(new XYChart.Data("2",3));
-//        series1.getData().add(new XYChart.Data("3",7));
-//        series1.getData().add(new XYChart.Data("4",7));
-//        series1.setName("Expenses");
-//
-//        lineChart.getData().add(series1);
-
     }
 
     private void setCompany() {
         try {
-            List<String> company = ClientDAOImpl.getCompany();
+            List<String> company = clientBO.getCompany();
             if(company.size() < 1){
                 hplCompany1.setText("no data");
             } else {
@@ -143,7 +174,7 @@ public class DashboardFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
         try {
-            List<String> company = ClientDAOImpl.getAddress();
+            List<String> company = clientBO.getAddress();
             if(company.size() < 1){
                 lblAddress1.setText("no data");
             } else {
@@ -166,7 +197,7 @@ public class DashboardFormController implements Initializable {
 
     private void setPackage() {
         try {
-            List<String> trackingNumbers = PackageDAOImpl.getTrackingNumbers();
+            List<String> trackingNumbers = packageBO.getTrackingNumbers();
             if(trackingNumbers.size() < 1){
                 hplTrackNum1.setText("no data");
             } else {
@@ -191,7 +222,7 @@ public class DashboardFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
         try {
-            List<String> companyId = PackageDAOImpl.getCompanyId();
+            List<String> companyId = packageBO.getCompanyId();
             if(companyId.size() < 1){
                 lblCompany1.setText("no data");
             } else {
@@ -218,7 +249,7 @@ public class DashboardFormController implements Initializable {
     }
 
     private void setUserName() {
-
+        userName.setText("Sahan Dhanujaya");
     }
 
 

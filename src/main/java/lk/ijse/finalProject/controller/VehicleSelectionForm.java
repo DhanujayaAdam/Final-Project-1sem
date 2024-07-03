@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
 import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
 
@@ -21,7 +22,7 @@ public class VehicleSelectionForm implements Initializable {
 
     public JFXComboBox<String> comboId;
     public AnchorPane rootNode;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

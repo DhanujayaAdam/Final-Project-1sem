@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.VehicleBO;
 import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
 import lk.ijse.finalProject.dto.VehicleDTO;
@@ -27,7 +28,7 @@ public class VehicleViewFormController implements Initializable {
     public TextField txtEngineNumber;
     public TextField txtSearch;
     public Label lblDatePicker;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
 
     public void btnBackOnAction(ActionEvent actionEvent) {
     }

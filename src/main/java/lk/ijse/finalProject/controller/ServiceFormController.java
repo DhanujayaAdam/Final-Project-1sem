@@ -1,5 +1,6 @@
 package lk.ijse.finalProject.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,10 +13,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import lk.ijse.finalProject.bo.custom.VehicleBO;
-import lk.ijse.finalProject.bo.custom.impl.VehicleBOImpl;
+import lk.ijse.finalProject.bo.BOFactory;
+import lk.ijse.finalProject.bo.custom.*;
+import lk.ijse.finalProject.bo.custom.impl.*;
+import lk.ijse.finalProject.dao.custom.ServiceCenterDAO;
 import lk.ijse.finalProject.db.Dbconnection;
 import lk.ijse.finalProject.dao.custom.impl.*;
+import lk.ijse.finalProject.dto.*;
 import lk.ijse.finalProject.entity.*;
 import lk.ijse.finalProject.entity.tm.ServiceTm;
 import lk.ijse.finalProject.util.Regex;
@@ -25,6 +29,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -35,12 +40,12 @@ import java.util.ResourceBundle;
 
 public class ServiceFormController implements Initializable {
     public TextField txtSearchBar;
-    public TableColumn<?,?> clmVehicleId;
-    public TableColumn<?,?> clmDescription;
-    public TableColumn<?,?> clmServiceCenter;
-    public TableColumn<?,?> clmServiceCost;
-    public TableColumn<?,?> clmServiceDate;
-    public TableColumn<?,?> clmEdit;
+    public TableColumn<?, ?> clmVehicleId;
+    public TableColumn<?, ?> clmDescription;
+    public TableColumn<?, ?> clmServiceCenter;
+    public TableColumn<?, ?> clmServiceCost;
+    public TableColumn<?, ?> clmServiceDate;
+    public TableColumn<?, ?> clmEdit;
     public TextField txtDescription;
     public JFXComboBox<String> comboVehicleId;
     public JFXComboBox<String> comboServiceType;
@@ -73,7 +78,13 @@ public class ServiceFormController implements Initializable {
     public Label tel4;
     public Hyperlink center5;
     public Label tel5;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    public JFXButton btnGenerateReport;
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.VEHICLE);
+    ServiceCenterBO centerBO = (ServiceCenterBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.SERVICE_CENTER);
+    QueryBO queryBO = (QueryBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.JOIN_QUERY);
+    ServiceSheduleBO serviceSheduleBO = (ServiceSheduleBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.SERVICE_SCHEDULE);
+    ServiceBO serviceBO = (ServiceBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.SERVICE);
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getInstance(BOFactory.BoType.PAYMENT);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -99,8 +110,8 @@ public class ServiceFormController implements Initializable {
         profilePicture5.setFill(new ImagePattern(image));
 
         try {
-            List<String> nameList = ServiceCenterDAOImpl.getName();
-            if(nameList.size() < 1){
+            List<String> nameList = centerBO.getName();
+            if (nameList.size() < 1) {
                 center1.setText("no data");
             } else {
                 center1.setText(nameList.get(0));
@@ -126,11 +137,11 @@ public class ServiceFormController implements Initializable {
                 center5.setText(nameList.get(4));
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         try {
-            List<String> nameList = ServiceCenterDAOImpl.getPhone();
-            if(nameList.size() < 1){
+            List<String> nameList = centerBO.getPhone();
+            if (nameList.size() < 1) {
                 tel1.setText("no data");
             } else {
                 tel1.setText(nameList.get(0));
@@ -156,7 +167,7 @@ public class ServiceFormController implements Initializable {
                 tel5.setText(nameList.get(4));
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -171,8 +182,8 @@ public class ServiceFormController implements Initializable {
     private void setTable() {
         ObservableList<ServiceTm> obList = FXCollections.observableArrayList();
         try {
-            List<ServiceTable> allDetail = ServiceDAOImpl.getAllDetail();
-            for (ServiceTable detail : allDetail){
+            List<ServiceTableDTO> allDetail = queryBO.getAllDetail();
+            for (ServiceTableDTO detail : allDetail) {
                 ServiceTm tm = new ServiceTm(
                         detail.getVehicleId(),
                         detail.getDescription(),
@@ -184,41 +195,41 @@ public class ServiceFormController implements Initializable {
             }
             tblService.setItems(obList);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
     private void setComboPaymentMethod() {
         ObservableList<String> obList = FXCollections.observableArrayList();
-        obList.add(0,"Card");
-        obList.add(1,"Deposit");
-        obList.add(2,"Cash");
+        obList.add(0, "Card");
+        obList.add(1, "Deposit");
+        obList.add(2, "Cash");
         comboPayment.setItems(obList);
     }
 
     private void setComboServiceCenter() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> idList = ServiceCenterDAOImpl.getId();
-            for (String id : idList){
+            List<String> idList = centerBO.getIds();
+            for (String id : idList) {
                 obList.add(id);
             }
             comboServiceCenter.setItems(obList);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
     private void setComboServiceType() {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
-            List<String> typeList = ServiceScheduleDAOImpl.getType();
-            for (String type : typeList){
+            List<String> typeList = serviceSheduleBO.getType();
+            for (String type : typeList) {
                 obList.add(type);
             }
             comboServiceType.setItems(obList);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -226,30 +237,30 @@ public class ServiceFormController implements Initializable {
         ObservableList<String> obList = FXCollections.observableArrayList();
         try {
             List<String> vehicleId = vehicleBO.getCurrentVehicleList();
-            for (String vehiId : vehicleId){
+            for (String vehiId : vehicleId) {
                 obList.add(vehiId);
             }
             comboVehicleId.setItems(obList);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
     public void txtSearchOnAction(ActionEvent actionEvent) {
         String text = txtSearchBar.getText();
         try {
-            Service service = ServiceDAOImpl.getAll();
+            ServiceDTO service = serviceBO.getServiceObject(text);
             txtDescription.setText(service.getDescription());
             txtDate.setText(String.valueOf(service.getDate()));
             txtAmount.setText("Check Your Service Bill");
 
-            ServiceCenter centers = ServiceCenterDAOImpl.getAll(text);
+            ServiceCenterDTO centers = centerBO.getCenterObject(text);
             txtCenter.setText(centers.getName());
             txtLocation.setText(centers.getLocation());
             txtPhone.setText(centers.getTel());
             txtEmail.setText(centers.getEmail());
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -268,39 +279,19 @@ public class ServiceFormController implements Initializable {
     }
 
     public void btnSaveOnAction(ActionEvent actionEvent) {
-        String vehicleId = comboVehicleId.getValue();
-        String serviceType = comboServiceType.getValue();
-        String center = comboServiceCenter.getValue();
-        String method = comboPayment.getValue();
-        String description = txtDescription.getText();
-        Date date = Date.valueOf(txtDate.getText());
-        double amount = Double.parseDouble(txtAmount.getText());
         try {
-            String currentId = ServiceDAOImpl.getAvailableId();
-            String availableId = ServiceDAOImpl.getCurrentId(currentId);
-            Service service = new Service(availableId,vehicleId,serviceType,description,date,center);
-
-            String currentPaymentId1 = PaymentDAOImpl.getCurrentId();
-            String nextId = PaymentDAOImpl.getNextId(currentPaymentId1);
-            Payment payment = new Payment(nextId,center,amount,method,date);
-
-            ServisePayment sp = new ServisePayment(service,payment);
-            boolean isSaved = ServicePaymentRepo.save(sp);
-            if (isSaved){
-                setTable();
-                setCellValueFactory();
-                new Alert(Alert.AlertType.CONFIRMATION,"Service saved successfully").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR,"Service saved unsuccessfully").show();
+            boolean isSave = savePayment();
+            if (isSave){
+                new Alert(Alert.AlertType.CONFIRMATION,"Payment successfully").show();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Payment unsuccessfully").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
-
     }
 
-    public void btnUpdateOnAction(ActionEvent actionEvent) {
-        String id = txtSearchBar.getText();
+    public boolean savePayment() throws SQLException {
         String vehicleId = comboVehicleId.getValue();
         String serviceType = comboServiceType.getValue();
         String center = comboServiceCenter.getValue();
@@ -309,21 +300,58 @@ public class ServiceFormController implements Initializable {
         Date date = Date.valueOf(txtDate.getText());
         double amount = Double.parseDouble(txtAmount.getText());
         try {
-            String id1 = PaymentDAOImpl.getId(date);
-            Service service = new Service(id,vehicleId,serviceType,description,date,center);
-            Payment payment = new Payment(id1,center,amount,method,date);
-            ServisePayment sp = new ServisePayment(service,payment);
-            boolean isUpdated = ServicePaymentRepo.update(sp);
-            if(isUpdated){
-                setTable();
-                setCellValueFactory();
-                new Alert(Alert.AlertType.CONFIRMATION,"Service updated successfully").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR,"Service update unsuccessfully").show();
+            String currentId = serviceBO.getServiceId();
+            String availableId = null;
+            if (center != null) {
+                if (currentId != null) {
+                    String[] split = currentId.split("SE");
+                    int idNum = Integer.parseInt(split[1]);
+                    availableId = "SE" + ++idNum;
+                }
+                availableId = "SE1";
             }
-        } catch (SQLException e) {
+
+            String currentPaymentId = paymentBO.getPaymentId();
+            String nextId = null;
+            if (currentPaymentId != null) {
+                String[] split = currentPaymentId.split("T");
+                int idNum = Integer.parseInt(split[1]);
+                nextId = "T" + ++idNum;
+            } else {
+                nextId = "T1";
+            }
+            //Payment transaction
+            Connection connection = Dbconnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            System.out.println("statement 1");
+            boolean isSaved = serviceBO.addService(new ServiceDTO(availableId, vehicleId, serviceType, description, date, center));
+                if (!isSaved) {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                    return false;
+                }
+            boolean isSave = paymentBO.addPayment(new PaymentDTO(nextId, center, amount, method, date));
+            System.out.println("statement 1");
+            PaymentDTO paymentDTO = new PaymentDTO(nextId, center, amount, method, date);
+            System.out.println(paymentDTO);
+                if (!isSave) {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                    return false;
+                }
+            System.out.println("statement 2");
+                connection.commit();
+                connection.setAutoCommit(true);
+                return true;
+        } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+        return false;
+    }
+
+
+    public void btnUpdateOnAction(ActionEvent actionEvent) {
+        new Alert(Alert.AlertType.INFORMATION,"Can't update payment").show();
 
     }
 
@@ -332,11 +360,12 @@ public class ServiceFormController implements Initializable {
 
     public void btnAddCenterOnAction(ActionEvent actionEvent) {
         newPane.setVisible(true);
+        btnGenerateReport.setVisible(false);
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) {
         newPane.setVisible(false);
-
+        btnGenerateReport.setVisible(true);
     }
 
     public void txtCenterOnAction(ActionEvent actionEvent) {
@@ -360,11 +389,18 @@ public class ServiceFormController implements Initializable {
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
         try {
-            String currentId = ServiceCenterDAOImpl.getCurrentId();
-            String avilableId = ServiceCenterDAOImpl.getAvilableId(currentId);
-            ServiceCenter serviceCenter = new ServiceCenter(avilableId,center,location,phone,email);
+            String currentId = centerBO.getCenterId();
+            String avilableId = null;
+            if (currentId != null){
+                if (currentId != null){
+                    String[] split = currentId.split("SCI");
+                    int idNum = Integer.parseInt(split[1]);
+                    avilableId = "SCI" + ++idNum;
+                }
+                avilableId = "SCI1";
+            }
             if (isValided()) {
-                boolean isSaved = ServiceCenterDAOImpl.saveCenter(serviceCenter);
+                boolean isSaved = centerBO.addCenter(new ServiceCenterDTO(avilableId,center,location,phone,email));
                 if (isSaved) {
                     clearFields();
                     new Alert(Alert.AlertType.CONFIRMATION, "Service center saved successfully").show();
@@ -383,11 +419,11 @@ public class ServiceFormController implements Initializable {
         String location = txtLocation.getText();
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
-        ServiceCenter serviceCenter = new ServiceCenter(id,center,location,phone,email);
+
         try {
             if (isValided()) {
                 clearFields();
-                boolean isUpdated = ServiceCenterDAOImpl.update(serviceCenter);
+                boolean isUpdated = centerBO.updateCenter(new ServiceCenterDTO(id,center,location,phone,email));
                 if (isUpdated) {
                     clearFields();
                     new Alert(Alert.AlertType.CONFIRMATION, "Service center update successfully").show();
@@ -452,7 +488,7 @@ public class ServiceFormController implements Initializable {
         JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/report/driverDetail.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-        Vehicle vehicle = VehicleDAOImpl.getValues((comboVehicleId.getValue()));
+        VehicleDTO vehicle = vehicleBO.getVehicleObject((comboVehicleId.getValue()));
 
         Map<String,Object> data = new HashMap<>();
         data.put("Date" ,lblDatePicker.getText());

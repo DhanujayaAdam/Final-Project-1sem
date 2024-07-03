@@ -1,6 +1,8 @@
 package lk.ijse.finalProject.bo.custom.impl;
 
+import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.UserBO;
+import lk.ijse.finalProject.dao.DAOFactory;
 import lk.ijse.finalProject.dao.custom.UserDAO;
 import lk.ijse.finalProject.dao.custom.impl.UserDAOImpl;
 import lk.ijse.finalProject.dto.UserDTO;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserBOImpl implements UserBO {
-    UserDAO userDAO = new UserDAOImpl();
+    UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getInstance(DAOFactory.DaoType.USER);
     @Override
     public boolean addUser(UserDTO obj) throws SQLException {
         return userDAO.add(new User(obj.getId(),obj.getName(),obj.getPassword()));
