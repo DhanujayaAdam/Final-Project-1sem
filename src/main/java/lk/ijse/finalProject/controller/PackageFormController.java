@@ -2,7 +2,6 @@ package lk.ijse.finalProject.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -16,14 +15,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.*;
-import lk.ijse.finalProject.bo.custom.impl.*;
 import lk.ijse.finalProject.controller.mail.Mail;
-import lk.ijse.finalProject.dao.custom.impl.*;
 import lk.ijse.finalProject.db.Dbconnection;
 import lk.ijse.finalProject.dto.*;
 import lk.ijse.finalProject.entity.*;
-import lk.ijse.finalProject.entity.Package;
-import lk.ijse.finalProject.entity.tm.PackageTm;
+import view.tm.PackageTm;
 import lk.ijse.finalProject.util.Regex;
 
 import java.net.URL;
@@ -31,7 +27,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -166,13 +161,13 @@ public class PackageFormController implements Initializable {
     }
 
     private void setProfile() {
-        Image image = new Image(getClass().getResourceAsStream("/image/humen1.jpeg"));
+        Image image = new Image(getClass().getResourceAsStream("/assets/image/humen1.jpeg"));
         profilePicture.setFill(new ImagePattern(image));
-        Image image1 = new Image(getClass().getResourceAsStream("/package/HealthiestFruits-feb2318dc0a3454993007f57c724753f.jpg"));
-        Image image2 = new Image(getClass().getResourceAsStream("/package/fast-fashion2.jpeg"));
-        Image image3 = new Image(getClass().getResourceAsStream("/package/086924c9-23b7-41c6-9218-45685c563a2e-h.jpeg"));
-        Image image4 = new Image(getClass().getResourceAsStream("/package/images.jpeg"));
-        Image image5 = new Image(getClass().getResourceAsStream("/package/1_0x0_2119x1415_0x520_new_tyres.jpg"));
+        Image image1 = new Image(getClass().getResourceAsStream("/assets/package/HealthiestFruits-feb2318dc0a3454993007f57c724753f.jpg"));
+        Image image2 = new Image(getClass().getResourceAsStream("/assets/package/fast-fashion2.jpeg"));
+        Image image3 = new Image(getClass().getResourceAsStream("/assets/package/086924c9-23b7-41c6-9218-45685c563a2e-h.jpeg"));
+        Image image4 = new Image(getClass().getResourceAsStream("/assets/package/images.jpeg"));
+        Image image5 = new Image(getClass().getResourceAsStream("/assets/package/1_0x0_2119x1415_0x520_new_tyres.jpg"));
         picture1.setFill(new ImagePattern(image1));
         picture2.setFill(new ImagePattern(image2));
         picture3.setFill(new ImagePattern(image3));

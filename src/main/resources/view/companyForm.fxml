@@ -26,7 +26,7 @@
                <children>
                   <ImageView fitHeight="368.0" fitWidth="357.0" layoutX="802.0" layoutY="23.0">
                      <image>
-                        <Image url="@../background/Business-meeting-cartoon-illustration-vector.jpg" />
+                        <Image url="@../assets/background/Business-meeting-cartoon-illustration-vector.jpg" />
                      </image>
                   </ImageView>
                   <JFXButton buttonType="RAISED" layoutX="497.0" layoutY="340.0" onAction="#btnClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
@@ -225,12 +225,12 @@
       </Label>
       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1302.0" layoutY="36.0" style="-fx-cursor: hand;">
          <image>
-            <Image url="@../gift/icons8-mail(1).gif" />
+            <Image url="@../assets/gift/icons8-mail(1).gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1374.0" layoutY="36.0" style="-fx-cursor: hand;">
          <image>
-            <Image url="@../gift/icons8-alert.gif" />
+            <Image url="@../assets/gift/icons8-alert.gif" />
          </image>
       </ImageView>
       <Circle fx:id="profilePicture" fill="#ffffff00" layoutX="1639.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
@@ -238,7 +238,7 @@
          <children>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-search-50(1).png" />
+                  <Image url="@../assets/icon/icons8-search-50(1).png" />
                </image>
             </ImageView>
             <TextField fx:id="txtSearchBar" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="285.0" promptText="search company" style="-fx-background-color: white; -fx-background-radius: 15;" />

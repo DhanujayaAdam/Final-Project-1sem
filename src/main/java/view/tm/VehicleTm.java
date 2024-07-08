@@ -1,4 +1,4 @@
-package lk.ijse.finalProject.entity.tm;
+package view.tm;
 
 import lombok.*;
 

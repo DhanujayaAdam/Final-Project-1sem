@@ -98,7 +98,7 @@
             <Pane layoutX="641.0" layoutY="165.0" prefHeight="19.0" prefWidth="25.0" style="-fx-background-color: white;" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="641.0" layoutY="162.0">
                <image>
-                  <Image url="@../icon/icons8-camera-50.png" />
+                  <Image url="@../assets/icon/icons8-camera-50.png" />
                </image>
             </ImageView>
             <JFXButton layoutX="642.0" layoutY="166.0" onAction="#btnChooseImageOnAction" prefHeight="15.0" prefWidth="28.0" text="." />

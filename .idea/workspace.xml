@@ -196,22 +196,6 @@
       <workItem from="1714490412347" duration="120000" />
       <workItem from="1715681527118" duration="50000" />
     </task>
-    <task id="LOCAL-00001" summary="git push">
-      <option name="closed" value="true" />
-      <created>1712999727409</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1712999727409</updated>
-    </task>
-    <task id="LOCAL-00002" summary="git push">
-      <option name="closed" value="true" />
-      <created>1712999861331</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1712999861331</updated>
-    </task>
     <task id="LOCAL-00003" summary="git push">
       <option name="closed" value="true" />
       <created>1713000236748</created>
@@ -588,7 +572,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720037425906</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Mainly Done!">
+      <option name="closed" value="true" />
+      <created>1720081583474</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1720081583475</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Mainly Done!">
+      <option name="closed" value="true" />
+      <created>1720081863385</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1720081863385</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

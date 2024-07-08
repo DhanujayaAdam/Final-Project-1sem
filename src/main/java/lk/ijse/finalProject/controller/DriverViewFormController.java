@@ -67,7 +67,7 @@ public class DriverViewFormController implements Initializable {
         txtNic.setText(driver.getNic());
         txtPhone.setText(driver.getContact());
         txtEmail.setText(driver.getEmail());
-        employeeProfile.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/blankProfile/images.png"))));
+        employeeProfile.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/assets/blankProfile/images.png"))));
     }
 
     public void txtSearchOnAction(ActionEvent actionEvent) {

@@ -161,17 +161,17 @@ public class DriverFormController {
 
 
     private void setProfilePicture() {
-        Image image = new Image(String.valueOf(this.getClass().getResource("/image/humen1.jpeg")));
+        Image image = new Image(String.valueOf(this.getClass().getResource("/assets/image/humen1.jpeg")));
         profilePicture.setFill(new ImagePattern(image));
 
-        Image image1 = new Image(String.valueOf(this.getClass().getResource("/driver/driver1.jpg")));
-        Image image2 = new Image(String.valueOf(this.getClass().getResource("/driver/humen3.jpeg")));
-        Image image3 = new Image(String.valueOf(this.getClass().getResource("/driver/humen4.jpeg")));
-        Image image4 = new Image(String.valueOf(this.getClass().getResource("/driver/manager1.jpg")));
-        Image image5 = new Image(String.valueOf(this.getClass().getResource("/driver/humen5.jpg")));
-        Image image6 = new Image(String.valueOf(this.getClass().getResource("/driver/manager1.jpg")));
-        Image image7 = new Image(String.valueOf(this.getClass().getResource("/driver/driver2.jpg")));
-        Image image8 = new Image(String.valueOf(this.getClass().getResource("/driver/dispatcher.jpeg")));
+        Image image1 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/driver1.jpg")));
+        Image image2 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/humen3.jpeg")));
+        Image image3 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/humen4.jpeg")));
+        Image image4 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/manager1.jpg")));
+        Image image5 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/humen5.jpg")));
+        Image image6 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/manager1.jpg")));
+        Image image7 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/driver2.jpg")));
+        Image image8 = new Image(String.valueOf(this.getClass().getResource("/assets/driver/dispatcher.jpeg")));
 
 //       BackgroundImage bgImage = new BackgroundImage(
 //               image,

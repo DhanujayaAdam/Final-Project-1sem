@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="594.0" fitWidth="918.0" opacity="0.78">
          <image>
-            <Image url="@../image/blueContainerTank.png" />
+            <Image url="@../assets/image/blueContainerTank.png" />
          </image>
       </ImageView>
       <Pane layoutX="37.0" layoutY="118.0" prefHeight="358.0" prefWidth="271.0" style="-fx-background-color: white; -fx-background-radius: 10;">
@@ -57,14 +57,14 @@
             <Button layoutX="202.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnVisibleTxtOnAction" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: white; -fx-cursor: hand;" />
             <ImageView fx:id="imvEye" fitHeight="25.0" fitWidth="25.0" layoutX="212.0" layoutY="141.0">
                <image>
-                  <Image url="@../icon/icons8-eye-52.png" />
+                  <Image url="@../assets/icon/icons8-eye-52.png" />
                </image>
             </ImageView>
             <TextField fx:id="txtVisiblePassword" layoutX="25.0" layoutY="132.0" prefHeight="43.0" prefWidth="225.0" style="visibility: false; -fx-background-radius: 116; -fx-border-radius: 116; -fx-border-color: black;" />
             <Button fx:id="btnInvisible" layoutX="200.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnVisiblePasswordTxtOnAction" prefHeight="25.0" prefWidth="38.0" style="visibility: false; -fx-background-color: white; -fx-cursor: hand;" />
             <ImageView fx:id="imvBlind" fitHeight="25.0" fitWidth="25.0" layoutX="213.0" layoutY="142.0" style="visibility: false;">
                <image>
-                  <Image url="@../icon/icons8-blind-26.png" />
+                  <Image url="@../assets/icon/icons8-blind-26.png" />
                </image>
             </ImageView>
          </children>

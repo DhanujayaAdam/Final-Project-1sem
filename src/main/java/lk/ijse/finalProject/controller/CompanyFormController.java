@@ -19,11 +19,8 @@ import javafx.scene.shape.Circle;
 import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.ClientBO;
 import lk.ijse.finalProject.bo.custom.PackageBO;
-import lk.ijse.finalProject.bo.custom.impl.ClientBOImpl;
-import lk.ijse.finalProject.bo.custom.impl.PackageBOImpl;
 import lk.ijse.finalProject.dto.ClientDTO;
-import lk.ijse.finalProject.entity.tm.ClientTm;
-import lk.ijse.finalProject.dao.custom.impl.PackageDAOImpl;
+import view.tm.ClientTm;
 import lk.ijse.finalProject.util.Regex;
 
 import java.net.URL;
@@ -124,14 +121,14 @@ public class CompanyFormController implements Initializable {
     }
 
     private void setProfile() {
-        Image image = new Image(getClass().getResourceAsStream("/image/humen1.jpeg"));
+        Image image = new Image(getClass().getResourceAsStream("/assets/image/humen1.jpeg"));
         this.profilePicture.setFill(new ImagePattern(image));
 
-        Image image1 = new Image(getClass().getResourceAsStream("/company/MAS.jpeg"));
-        Image image2 = new Image(getClass().getResourceAsStream("/company/LALANNN.jpg"));
-        Image image3 = new Image(getClass().getResourceAsStream("/company/brandixleed-002.jpg"));
-        Image image4 = new Image(getClass().getResourceAsStream("/company/Ansell.jpg"));
-        Image image5 = new Image(getClass().getResourceAsStream("/company/Outclass-Crystallized-Gems.jpg"));
+        Image image1 = new Image(getClass().getResourceAsStream("/assets/company/MAS.jpeg"));
+        Image image2 = new Image(getClass().getResourceAsStream("/assets/company/LALANNN.jpg"));
+        Image image3 = new Image(getClass().getResourceAsStream("/assets/company/brandixleed-002.jpg"));
+        Image image4 = new Image(getClass().getResourceAsStream("/assets/company/Ansell.jpg"));
+        Image image5 = new Image(getClass().getResourceAsStream("/assets/company/Outclass-Crystallized-Gems.jpg"));
 
         profilePicture1.setFill(new ImagePattern(image1));
         profilePicture2.setFill(new ImagePattern(image2));

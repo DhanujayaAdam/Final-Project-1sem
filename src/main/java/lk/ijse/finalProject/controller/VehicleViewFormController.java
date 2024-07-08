@@ -73,7 +73,7 @@ public class VehicleViewFormController implements Initializable {
             txtEngineNumber.setText(vehicle.getEngineNum());
             txtVehicleNumber.setText(vehicle.getVehicle_number());
             txtCurrentMileage.setText(String.valueOf(vehicle.getCurrentDistance()));
-            vehicleProfile.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/blankProfile/images.png"))));
+            vehicleProfile.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/assets/blankProfile/images.png"))));
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }

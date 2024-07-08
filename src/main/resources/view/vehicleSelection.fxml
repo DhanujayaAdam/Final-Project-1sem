@@ -48,7 +48,7 @@
             </JFXButton>
             <ImageView layoutX="423.0" layoutY="-1.0">
                <image>
-                  <Image url="@../icon/icons8-close-24.png" />
+                  <Image url="@../assets/icon/icons8-close-24.png" />
                </image>
             </ImageView>
             <JFXButton layoutX="421.0" layoutY="1.0" onAction="#btnCancelOnAction1" prefHeight="24.0" prefWidth="24.0" text="." />

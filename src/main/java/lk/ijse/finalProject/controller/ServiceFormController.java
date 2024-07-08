@@ -15,13 +15,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import lk.ijse.finalProject.bo.BOFactory;
 import lk.ijse.finalProject.bo.custom.*;
-import lk.ijse.finalProject.bo.custom.impl.*;
-import lk.ijse.finalProject.dao.custom.ServiceCenterDAO;
 import lk.ijse.finalProject.db.Dbconnection;
-import lk.ijse.finalProject.dao.custom.impl.*;
 import lk.ijse.finalProject.dto.*;
-import lk.ijse.finalProject.entity.*;
-import lk.ijse.finalProject.entity.tm.ServiceTm;
+import view.tm.ServiceTm;
 import lk.ijse.finalProject.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -98,11 +94,11 @@ public class ServiceFormController implements Initializable {
     }
 
     private void setProfileAndValues() {
-        Image dp = new Image(getClass().getResourceAsStream("/image/humen1.jpeg"));
+        Image dp = new Image(getClass().getResourceAsStream("/assets/image/humen1.jpeg"));
         profilePicture.setFill(new ImagePattern(dp));
         lblDatePicker.setText(String.valueOf(LocalDate.now()));
 
-        Image image = new Image(getClass().getResourceAsStream("/serviceCenterProfile/car-and-vehicle-logo-for-your-needs-such-car-shop-service-store-car-repair-free-vector.jpg"));
+        Image image = new Image(getClass().getResourceAsStream("/assets/serviceCenterProfile/car-and-vehicle-logo-for-your-needs-such-car-shop-service-store-car-repair-free-vector.jpg"));
         profilePicture1.setFill(new ImagePattern(image));
         profilePicture2.setFill(new ImagePattern(image));
         profilePicture3.setFill(new ImagePattern(image));

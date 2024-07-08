@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.52">
          <image>
-            <Image url="@../image/16700399_1261374977273187_911085346465028800_o.jpg" />
+            <Image url="@../assets/image/16700399_1261374977273187_911085346465028800_o.jpg" />
          </image>
       </ImageView>
       <Pane layoutX="37.0" layoutY="80.0" prefHeight="241.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;">
@@ -52,7 +52,7 @@
          <children>
             <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="8.0" layoutY="16.0">
                <image>
-                  <Image url="@../icon/icons8-logo-50.png" />
+                  <Image url="@../assets/icon/icons8-logo-50.png" />
                </image>
             </ImageView>
             <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="US CARGO">
@@ -115,7 +115,7 @@
       </Text>
       <ImageView fitWidth="30.0" layoutX="19.0" layoutY="14.0">
          <image>
-            <Image url="@../icon/icons8-home-30(2).png" />
+            <Image url="@../assets/icon/icons8-home-30(2).png" />
          </image>
       </ImageView>
       <JFXButton layoutX="18.0" layoutY="17.0" onAction="#btnBackOnAction" prefHeight="24.0" prefWidth="105.0" text="Back" textFill="WHITE">

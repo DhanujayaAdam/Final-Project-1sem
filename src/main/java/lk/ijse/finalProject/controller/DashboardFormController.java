@@ -254,24 +254,24 @@ public class DashboardFormController implements Initializable {
 
 
     private void setProfilePicture() {
-        Image dp = new Image(String.valueOf(this.getClass().getResource("/image/humen1.jpeg")));
+        Image dp = new Image(String.valueOf(this.getClass().getResource("/assets/image/humen1.jpeg")));
         profilePicture.setFill(new ImagePattern(dp));
         profilePicture1.setFill(new ImagePattern(dp));
 
-        Image vehicle1 = new Image(getClass().getResourceAsStream("/truck/images.jpeg"));
-        Image vehicle2 = new Image(getClass().getResourceAsStream("/truck/daf.jpeg"));
-        Image vehicle3 = new Image(getClass().getResourceAsStream("/truck/Scania1.jpeg"));
-        Image vehicle4 = new Image(getClass().getResourceAsStream("/truck/Scania3.jpg"));
+        Image vehicle1 = new Image(getClass().getResourceAsStream("/assets/truck/images.jpeg"));
+        Image vehicle2 = new Image(getClass().getResourceAsStream("/assets/truck/daf.jpeg"));
+        Image vehicle3 = new Image(getClass().getResourceAsStream("/assets/truck/Scania1.jpeg"));
+        Image vehicle4 = new Image(getClass().getResourceAsStream("/assets/truck/Scania3.jpg"));
 
         this.vehicle1.setFill(new ImagePattern(vehicle1));
         this.vehicle2.setFill(new ImagePattern(vehicle2));
         this.vehicle3.setFill(new ImagePattern(vehicle3));
         this.vehicle4.setFill(new ImagePattern(vehicle4));
 
-        Image employee1 = new Image(getClass().getResourceAsStream("/driver/humen5.jpg"));
-        Image employee2 = new Image(getClass().getResourceAsStream("/driver/humen3.jpeg"));
-        Image employee3 = new Image(getClass().getResourceAsStream("/driver/driver2.jpg"));
-        Image employee4 = new Image(getClass().getResourceAsStream("/driver/humen4.jpeg"));
+        Image employee1 = new Image(getClass().getResourceAsStream("/assets/driver/humen5.jpg"));
+        Image employee2 = new Image(getClass().getResourceAsStream("/assets/driver/humen3.jpeg"));
+        Image employee3 = new Image(getClass().getResourceAsStream("/assets/driver/driver2.jpg"));
+        Image employee4 = new Image(getClass().getResourceAsStream("/assets/driver/humen4.jpeg"));
 
         this.employee1.setFill(new ImagePattern(employee1));
         this.employee2.setFill(new ImagePattern(employee2));
@@ -279,19 +279,19 @@ public class DashboardFormController implements Initializable {
         this.employee4.setFill(new ImagePattern(employee4));
 
 
-        Image package1 = new Image(getClass().getResourceAsStream("/package/1_0x0_2119x1415_0x520_new_tyres.jpg"));
-        Image package2 = new Image(getClass().getResourceAsStream("/package/086924c9-23b7-41c6-9218-45685c563a2e-h.jpeg"));
-        Image package3 = new Image(getClass().getResourceAsStream("/package/fast-fashion2.jpeg"));
-        Image package4 = new Image(getClass().getResourceAsStream("/package/HealthiestFruits-feb2318dc0a3454993007f57c724753f.jpg"));
+        Image package1 = new Image(getClass().getResourceAsStream("/assets/package/1_0x0_2119x1415_0x520_new_tyres.jpg"));
+        Image package2 = new Image(getClass().getResourceAsStream("/assets/package/086924c9-23b7-41c6-9218-45685c563a2e-h.jpeg"));
+        Image package3 = new Image(getClass().getResourceAsStream("/assets/package/fast-fashion2.jpeg"));
+        Image package4 = new Image(getClass().getResourceAsStream("/assets/package/HealthiestFruits-feb2318dc0a3454993007f57c724753f.jpg"));
 
         this.package1.setFill(new ImagePattern(package1));
         this.package2.setFill(new ImagePattern(package2));
         this.package3.setFill(new ImagePattern(package3));
         this.package4.setFill(new ImagePattern(package4));
 
-        Image company1 = new Image(getClass().getResourceAsStream("/company/MAS.jpeg"));
-        Image company2 = new Image(getClass().getResourceAsStream("/company/LALANNN.jpg"));
-        Image company3 = new Image(getClass().getResourceAsStream("/company/brandixleed-002.jpg"));
+        Image company1 = new Image(getClass().getResourceAsStream("/assets/company/MAS.jpeg"));
+        Image company2 = new Image(getClass().getResourceAsStream("/assets/company/LALANNN.jpg"));
+        Image company3 = new Image(getClass().getResourceAsStream("/assets/company/brandixleed-002.jpg"));
 
         this.company1.setFill(new ImagePattern(company1));
         this.company2.setFill(new ImagePattern(company2));

@@ -39,7 +39,7 @@
                   </Label>
                   <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="103.0" layoutY="223.0">
                      <image>
-                        <Image url="@../icon/icons8-tick-32.png" />
+                        <Image url="@../assets/icon/icons8-tick-32.png" />
                      </image>
                   </ImageView>
                </children>
@@ -58,7 +58,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/icons8-back-64(1).png" />
+                        <Image url="@../assets/icon/icons8-back-64(1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -72,7 +72,7 @@
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0">
                      <image>
-                        <Image url="@../icon/icons8-search-50(1).png" />
+                        <Image url="@../assets/icon/icons8-search-50(1).png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="txtSearch" onAction="#txtSearchOnAction" prefHeight="34.0" prefWidth="305.0" promptText="search driver" style="-fx-background-color: white; -fx-background-radius: 17;" />
@@ -82,12 +82,12 @@
             <Circle fill="#ffffff00" layoutX="1461.0" layoutY="55.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1373.0" layoutY="38.0" style="-fx-cursor: hand;">
                <image>
-                  <Image url="@../gift/icons8-mail(1).gif" />
+                  <Image url="@../assets/gift/icons8-mail(1).gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1443.0" layoutY="38.0" style="-fx-cursor: hand;">
                <image>
-                  <Image url="@../gift/icons8-alert.gif" />
+                  <Image url="@../assets/gift/icons8-alert.gif" />
                </image>
             </ImageView>
             <Label fx:id="lblDatePicker" layoutX="1241.0" layoutY="45.0" text="2024-01-01">
@@ -149,7 +149,7 @@
             </Pane>
             <ImageView fitHeight="514.0" fitWidth="554.0" layoutX="1049.0" layoutY="160.0">
                <image>
-                  <Image url="@../background/istockphoto-1397741462-612x612.jpg" />
+                  <Image url="@../assets/background/istockphoto-1397741462-612x612.jpg" />
                </image>
             </ImageView>
             <TextField fx:id="txtModel" layoutX="420.0" layoutY="207.0" prefHeight="42.0" prefWidth="651.0" style="-fx-background-radius: 20; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 20;">

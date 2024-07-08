@@ -26,7 +26,7 @@
                <children>
                   <ImageView fitHeight="417.0" fitWidth="371.0" layoutX="782.0" layoutY="15.0">
                      <image>
-                        <Image url="@../background/moving-truck-with-boxes-back-side-of-the-loading-truck-man-with-carton-box-packing-free-vector.jpg" />
+                        <Image url="@../assets/background/moving-truck-with-boxes-back-side-of-the-loading-truck-man-with-carton-box-packing-free-vector.jpg" />
                      </image>
                   </ImageView>
                   <JFXButton buttonType="RAISED" layoutX="292.0" layoutY="360.0" onAction="#btnClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
@@ -84,7 +84,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/icons8-add-30.png" />
+                              <Image url="@../assets/icon/icons8-add-30.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -93,7 +93,7 @@
                      <children>
                         <ImageView fitHeight="280.0" fitWidth="477.0" layoutX="683.0" layoutY="54.0">
                            <image>
-                              <Image url="@../background/How-to-Make-an-App-like-Google-Maps-Google-Map-App-Developmen-feature-image-1024x454.png" />
+                              <Image url="@../assets/background/How-to-Make-an-App-like-Google-Maps-Google-Map-App-Developmen-feature-image-1024x454.png" />
                            </image>
                         </ImageView>
                         <JFXButton buttonType="RAISED" layoutX="292.0" layoutY="360.0" onAction="#btnRouteClearOnAction" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: gray;" text="clear">
@@ -148,7 +148,7 @@
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/icons8-close-48.png" />
+                                    <Image url="@../assets/icon/icons8-close-48.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -281,12 +281,12 @@
       </Label>
       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1302.0" layoutY="36.0" style="-fx-cursor: hand;">
          <image>
-            <Image url="@../gift/icons8-mail(1).gif" />
+            <Image url="@../assets/gift/icons8-mail(1).gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1374.0" layoutY="36.0" style="-fx-cursor: hand;">
          <image>
-            <Image url="@../gift/icons8-alert.gif" />
+            <Image url="@../assets/gift/icons8-alert.gif" />
          </image>
       </ImageView>
       <Circle fx:id="profilePicture" fill="#ffffff00" layoutX="1632.0" layoutY="52.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
@@ -294,7 +294,7 @@
          <children>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/icons8-search-50(1).png" />
+                  <Image url="@../assets/icon/icons8-search-50(1).png" />
                </image>
             </ImageView>
             <TextField fx:id="txtSearchBar" onAction="#txtSearchOnAction" prefHeight="35.0" prefWidth="285.0" promptText="search package" style="-fx-background-color: white; -fx-background-radius: 15;" />

@@ -158,16 +158,16 @@ public class VehicleFormController {
     }
 
     private void setProfile() {
-        Image image = new Image(String.valueOf(this.getClass().getResource("/image/humen1.jpeg")));
+        Image image = new Image(String.valueOf(this.getClass().getResource("/assets/image/humen1.jpeg")));
         profilePicture.setFill(new ImagePattern(image));
 
-        Image image1 = new Image(String.valueOf(this.getClass().getResource("/truck/daf.jpeg")));
-        Image image2 = new Image(String.valueOf(this.getClass().getResource("/truck/Scania3.jpg")));
-        Image image3 = new Image(String.valueOf(this.getClass().getResource("/truck/image-2.jpeg")));
-        Image image4 = new Image(String.valueOf(this.getClass().getResource("/truck/Scania1.jpeg")));
-        Image image5 = new Image(String.valueOf(this.getClass().getResource("/truck/DAF1.jpeg")));
-        Image image6 = new Image(String.valueOf(this.getClass().getResource("/truck/Scania2.jpg")));
-        Image image7 = new Image(String.valueOf(this.getClass().getResource("/truck/daf.jpg")));
+        Image image1 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/daf.jpeg")));
+        Image image2 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/Scania3.jpg")));
+        Image image3 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/image-2.jpeg")));
+        Image image4 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/Scania1.jpeg")));
+        Image image5 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/DAF1.jpeg")));
+        Image image6 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/Scania2.jpg")));
+        Image image7 = new Image(String.valueOf(this.getClass().getResource("/assets/truck/daf.jpg")));
 
         vp1.setFill(new ImagePattern(image1));
         vp2.setFill(new ImagePattern(image2));

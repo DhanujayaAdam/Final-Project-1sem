@@ -27,7 +27,7 @@
             <TextField layoutX="328.0" layoutY="29.0" prefHeight="27.0" prefWidth="236.0" promptText="Search alert" style="-fx-background-radius: 10; -fx-background-color: lightgray;" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="525.0" layoutY="30.0">
                <image>
-                  <Image url="@../icon/icons8-search-50.png" />
+                  <Image url="@../assets/icon/icons8-search-50.png" />
                </image>
             </ImageView>
             <Circle fill="WHITE" layoutX="595.0" layoutY="43.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
@@ -36,12 +36,12 @@
             <Circle fx:id="userProfile" fill="WHITE" layoutX="821.0" layoutY="43.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" style="-fx-cursor: hand;" />
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="629.0" layoutY="31.0" style="-fx-cursor: hand;">
                <image>
-                  <Image url="@../gift/icons8-alert.gif" />
+                  <Image url="@../assets/gift/icons8-alert.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="583.0" layoutY="29.0" style="-fx-cursor: hand;">
                <image>
-                  <Image url="@../gift/icons8-mail(1).gif" />
+                  <Image url="@../assets/gift/icons8-mail(1).gif" />
                </image>
             </ImageView>
          </children>
